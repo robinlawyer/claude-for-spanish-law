@@ -1,7 +1,7 @@
 {
   "mcpServers": {
     "robin": {
-      "type": "http",
+      "type": "streamable-http",
       "url": "https://api.robinlawyer.ai/mcp",
       "title": "Robin",
       "description": "Asistente jurídico español con corpus oficial verificable: BOE, 17 boletines autonómicos, CENDOJ con ECLI, TC, TJUE/TGUE, TEDH, AEPD por expediente, DGT consultas vinculantes, TEAC vinculante, Consejo de Estado, CNMC, CNMV, BdE, TACRC, TCU, Defensor del Pueblo, DOUE. 14 calculadoras procesales con auto-update IPC/IRAV. Cero alucinación de citas."
