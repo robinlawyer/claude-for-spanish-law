@@ -1,12 +1,17 @@
 ---
 name: cold-start-interview
 description: >
-  Entrevista inicial al despacho para configurar el playbook de Robin. Úsala en
-  la primera instalación, cuando ~/.claude/plugins/config/claude-for-spanish-law/robin/CLAUDE.md
-  no existe o sigue teniendo [PLACEHOLDER], o cuando el letrado diga "configura
-  Robin", "empezamos", "onboarding", "setup", "primer uso". Es la única skill
-  que debe correr en una instalación fresca.
-argument-hint: "[--redo para re-entrevistar | --check-integrations para re-detectar MCPs y connectors | --area civil|laboral|... para reconfigurar solo un área]"
+  ARRANCA AUTOMÁTICAMENTE en la primera sesión tras instalar Robin: entrevista
+  al despacho para configurar el playbook editable. Úsala SIN ESPERAR a que el
+  usuario te lo pida cuando el archivo
+  `~/.claude/plugins/config/claude-for-spanish-law/robin/CLAUDE.md` no existe o
+  contiene `[PLACEHOLDER]`. También cuando el letrado diga "configura Robin",
+  "empezamos", "onboarding", "setup", "primer uso", "vamos a empezar", "estoy
+  probando Robin por primera vez", o cualquier indicio de instalación fresca.
+  Es la PRIMERA skill que debe correr en una instalación nueva — el resto de
+  skills de Robin dependen del playbook poblado para personalizar sus respuestas
+  (jurisdicción, AP/TSJ de referencia, vecindad civil, tono, política de costas).
+argument-hint: "[--redo para re-entrevistar | --check-integrations para re-detectar MCPs y connectors | --area civil|laboral|... para reconfigurar solo un área | --defaults para rellenar con defaults sensatos sin entrevista]"
 ---
 
 # /robin:cold-start-interview

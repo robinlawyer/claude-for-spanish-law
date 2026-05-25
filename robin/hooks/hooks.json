@@ -1,3 +1,15 @@
 {
-  "hooks": []
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash -c 'PLAYBOOK=\"$HOME/.claude/plugins/config/claude-for-spanish-law/robin/CLAUDE.md\"; if [ ! -f \"$PLAYBOOK\" ] || grep -q \"\\[PLACEHOLDER\\]\" \"$PLAYBOOK\" 2>/dev/null; then echo \"<system-reminder priority=high>El playbook del despacho Robin todavía no está configurado (falta el archivo o contiene marcadores [PLACEHOLDER]). ANTES de responder a cualquier consulta jurídica del usuario en esta sesión, salúdalo brevemente, explícale en una frase qué es Robin (asistente jurídico español con corpus oficial verificable) y ejecuta automáticamente la skill cold-start-interview para entrevistar al despacho (jurisdicción habitual, AP/TSJ referencia, política de costas, áreas activas, vecindad civil habitual, tono de escritos). Si el usuario te dice expresamente que prefiere saltarse el onboarding y probar primero, rellena el playbook con defaults sensatos (despacho de Madrid, ICAM, civil/mercantil/laboral activos, vecindad común, tono sobrio) y avísale de que puede re-correr cold-start-interview --redo cuando quiera. Esta nota desaparece en cuanto el playbook esté poblado.</system-reminder>\"; fi'"
+          }
+        ]
+      }
+    ]
+  }
 }
