@@ -109,6 +109,20 @@ las aplica TODA skill, agent o respuesta de Claude bajo este plugin:
    no verifique se elimina o se sustituye. **Nunca devolver un escrito
    con cita no verificada.**
 
+4.bis. **Lectura íntegra obligatoria antes de citar una sentencia
+   argumentalmente.** `buscar_jurisprudencia` y demás `buscar_*`
+   devuelven un `extracto` de ~500 caracteres por hit. Eso basta para
+   SELECCIONAR candidatos, NO para CITAR en un escrito o dictamen.
+   Toda sentencia que vaya a apoyar un argumento del letrado (no
+   panorámica, no listado doctrinal) DEBE leerse íntegra antes con
+   `mcp__robin__obtener_sentencia_completa(ecli=…)`. La cita en el
+   escrito lleva el párrafo literal entrecomillado del FJ relevante
+   con pinpoint exacto ("FJ 3º, párrafo 2º") y tag
+   `[robin-verbatim]`. **Nunca paráfrasis** de una sentencia no
+   leída íntegra: el riesgo de atribuir doctrina al FJ equivocado o
+   inventar palabras es real y `verificar_cita` NO lo pilla (solo
+   valida que el ECLI existe, no el contenido pinpoint).
+
 5. **Si la consulta cae en rama civil, mercantil, contratación,
    familia, sucesiones o inmobiliario**, pasa por el detector foral
    (`/robin:foral-check` o llamada directa a la lógica equivalente).
@@ -282,12 +296,16 @@ las respuestas que te da.
 2. Ordena jurisprudencia por jerarquía (TS > AN > TSJ > AP > Juzgado),
    con prioridad territorial al TSJ y AP del despacho.
 3. Cita siempre con ECLI explícito junto a la referencia corta.
-4. Llama a `verificar_cita` sobre cada ECLI, BOE-A, expediente y
+4. **Lectura íntegra de cada sentencia argumental** vía
+   `obtener_sentencia_completa` antes de meterla en el escrito.
+   Pinpoint al FJ exacto + cita literal entrecomillada. Tag
+   `[robin-verbatim]`. Nada de paráfrasis de sentencias no leídas.
+5. Llama a `verificar_cita` sobre cada ECLI, BOE-A, expediente y
    artículo citado. Cualquier cita no verificada se elimina o se
    sustituye antes de cerrar.
-5. Calcula plazos procesales con `calculo_plazos` cuando el escrito los
+6. Calcula plazos procesales con `calculo_plazos` cuando el escrito los
    tenga.
-6. Cierra con bloque "Citas verificadas" y "Avisos al letrado".
+7. Cierra con bloque "Citas verificadas" y "Avisos al letrado".
 
 > **Si esto falla en algún momento, repórtalo en
 > https://robinlawyer.ai/feedback. Es un bug.**

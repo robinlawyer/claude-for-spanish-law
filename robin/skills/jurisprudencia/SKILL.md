@@ -54,6 +54,41 @@ Ejecuta en este orden:
 7. **AAPP del mismo TSJ** — si no hay AP de referencia o ésta no
    tiene sentencias relevantes.
 
+### 2.5. Lectura íntegra de los hits clave (OBLIGATORIO)
+
+`buscar_jurisprudencia` devuelve un `extracto` de ~500 caracteres por
+hit. Eso basta para descartar/seleccionar candidatos, **pero NO basta
+para citar en un escrito**. Antes de pasar al output:
+
+1. Selecciona los **top hits por nivel** que vayan a ser citados en el
+   escrito del letrado. Default: 2 por nivel jerárquico relevante
+   (TC, TS, AN, TSJ, AP). Si el letrado pide menos volumen ("dame las
+   2-3 clave"), uno por nivel.
+
+2. Para cada uno, llama
+   `mcp__robin__obtener_sentencia_completa(ecli=...)` (o `roj=...`).
+   Esto devuelve hasta 80.000 caracteres del texto íntegro de la
+   resolución.
+
+3. Del texto íntegro, **identifica el FJ concreto que contiene la
+   doctrina aplicable** al caso del letrado. Extrae el párrafo literal
+   relevante (no más de 8-10 líneas) y úsalo como cita textual. Cita
+   pinpoint: "FJ 3º" o "FJ 5º, párrafo 2º".
+
+4. Marca el bloque del hit con tag `[robin-verbatim]` (texto íntegro
+   leído de la sentencia, no paráfrasis del extracto vectorial).
+
+5. Si `obtener_sentencia_completa` devuelve
+   `sentencia_no_encontrada` para un hit que sí salió en
+   `buscar_jurisprudencia`, es un bug del corpus (mismatch entre
+   índice y storage): **avísalo en el output** y baja el tag de ese
+   hit a `[robin-corpus]` (extracto sin verbatim).
+
+**Por qué este paso es no negociable:** sin él, el redactor de escritos
+parafrasea de memoria lo que la sentencia "diría", y `verificar_cita`
+no pilla la fabricación porque solo valida que el ECLI exista — no
+valida que el párrafo entrecomillado provenga realmente del texto.
+
 ### 3. Filtros opcionales
 
 Acepta del usuario:
@@ -88,24 +123,36 @@ Si la rama es:
 
 ### 5. Output
 
-Por cada nivel jurisprudencial, un bloque:
+Por cada nivel jurisprudencial, un bloque. Cada hit que vaya a citarse
+en escrito incluye OBLIGATORIAMENTE la cita literal del FJ relevante
+(no paráfrasis), obtenida del paso 2.5:
 
 ```
 ### TC
-- STC 56/2023, de 22 mayo (rec. amparo 4521-2022) — ECLI:ES:TC:2023:56
+- STC 56/2023, de 22 mayo (rec. amparo 4521-2022) — ECLI:ES:TC:2023:56 [robin-verbatim]
   *Tesis:* La protección del art. 18 CE alcanza los datos de geolocalización
   obtenidos sin consentimiento explícito en relación laboral.
+  *Cita literal (FJ 4º):* "La geolocalización continuada del vehículo
+  facilitado por la empresa sin información expresa al trabajador
+  constituye una injerencia desproporcionada en el ámbito del art. 18.4
+  CE, no amparada por el art. 20.3 ET (…)".
   *Encaje en tu caso:* Apoya directamente el motivo 2 de tu recurso.
 
 ### TS — Sala 1ª
-- STS 1234/2024, de 15 oct (rec. 1100/2023) — ECLI:ES:TS:2024:5421
+- STS 1234/2024, de 15 oct (rec. 1100/2023) — ECLI:ES:TS:2024:5421 [robin-verbatim]
   *Tesis:* …
+  *Cita literal (FJ X):* "…"
   *Encaje en tu caso:* …
 ```
 
 Cada entrada lleva ECLI obligatorio, fecha completa, número de
-recurso, una línea de ratio decidendi y una línea de "encaje en tu
-caso".
+recurso, una línea de ratio decidendi, la **cita literal del FJ
+relevante con pinpoint** y una línea de "encaje en tu caso".
+
+Si el letrado ha pedido únicamente "panorama" o "qué hay sobre X" sin
+intención inmediata de redactar, puedes omitir la cita literal en hits
+periféricos para no inflar el output — pero los 2-3 hits centrales
+siempre llevan verbatim.
 
 ### 6. Verificación previa
 
@@ -181,8 +228,9 @@ vistazo qué grado de verificación tiene cada referencia:
 
 | Tag | Cuándo usar |
 |---|---|
-| `[robin-verified]` | Pasó `mcp__robin__verificar_cita`. Confianza alta. |
-| `[robin-corpus]` | Devuelta por una tool de búsqueda de Robin pero no re-verificada (típico en bloques de hits). |
+| `[robin-verbatim]` | Texto íntegro leído vía `mcp__robin__obtener_sentencia_completa`. La cita literal entrecomillada proviene del propio texto de la sentencia, no de paráfrasis ni de extracto vectorial. Máxima confianza para uso en escritos. |
+| `[robin-verified]` | Pasó `mcp__robin__verificar_cita`. Confianza alta sobre la existencia del identificador (ECLI/BOE-A), pero no implica lectura del texto íntegro. |
+| `[robin-corpus]` | Devuelta por una tool de búsqueda de Robin pero no re-verificada ni leída íntegra (típico en bloques de hits periféricos / panorama doctrinal). |
 | `[verify-pinpoint]` | Pinpoint cite (subapartado, ordinal) recordado del modelo — verifica contra fuente primaria SIEMPRE antes de meter en escrito. |
 | `[user-provided]` | Citada por el letrado en el input. No alterar. |
 | `[web-search — verify]` | Vía búsqueda externa (CENDOJ, BOE, AEPD). Verificar contra fuente antes de meter en escrito. |
