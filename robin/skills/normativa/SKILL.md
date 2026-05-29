@@ -36,6 +36,15 @@ artículos / disposiciones).
 "protección al consumidor en hipotecas") → `mcp__robin__buscar_normativa`
 con reranker.
 
+**Modo D — Resolución BOE íntegra** (Resoluciones DGSJFP/DGRN, DGT,
+AEPD, Órdenes ministeriales, Circulares, Instrucciones — identificadas
+por `BOE-A-AAAA-NNNNN`) → `mcp__robin__obtener_resolucion_boe`. Las
+resoluciones no se chunkean por artículos como las leyes: una Resolución
+DGSJFP típica es un solo FD doctrinal. **Llama a esta tool SIEMPRE**
+cuando `buscar_normativa` devuelva un hit con `tipo='Resolución'`,
+`'Orden'`, `'Circular'` o `'Instrucción'` y necesites el texto literal
+para citar — los extractos de búsqueda son fragmentarios.
+
 ### 2. Filtros disponibles
 
 - `--vigencia <fecha YYYY-MM-DD>` — versión consolidada aplicable en

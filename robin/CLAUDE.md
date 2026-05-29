@@ -56,6 +56,7 @@ las aplica TODA skill, agent o respuesta de Claude bajo este plugin:
    | Necesitas… | Tool Robin |
    |---|---|
    | Norma o artículo concreto | `mcp__robin__obtener_articulo_ley` |
+   | Resolución BOE íntegra (DGSJFP/DGRN, DGT, Órdenes, Circulares, Instrucciones por id `BOE-A-AAAA-NNNNN`) | `mcp__robin__obtener_resolucion_boe` |
    | Buscar jurisprudencia | `mcp__robin__buscar_jurisprudencia` |
    | TC | `mcp__robin__buscar_tc` |
    | TJUE / TGUE / TEDH | `mcp__robin__buscar_tjue` / `_tgue` / `_tedh` |
