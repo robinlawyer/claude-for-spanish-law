@@ -92,6 +92,31 @@ las aplica TODA skill, agent o respuesta de Claude bajo este plugin:
    | Auditoría compliance | `mcp__robin__auditar_compliance_*` (4 tipos) |
    | Análisis estratégico de caso | `mcp__robin__analizar_expediente`, `_escrito_contraparte`, `cronologia_hechos`, `mapa_documental`, `estimar_viabilidad_caso`, `generar_plan_estrategico`, `simular_oposicion` |
 
+1.bis. **EXPEDIENTE DEL PROYECTO PRIMERO — antes de redactar, calcular,
+   tipificar o invocar skill alguna, INVENTARÍA y LEE los documentos
+   adjuntos al proyecto Claude (knowledge files, attachments, PDFs,
+   escritos, contratos, sentencias, correos, etc.).** Son el expediente
+   del caso del abogado y contienen los hechos, partes, fechas, cuantías
+   y pretensiones reales. Sin ese contexto, cualquier escrito que generes
+   será una plantilla genérica desconectada del asunto — inservible para
+   el abogado.
+
+   - Lee TODO documento del proyecto al inicio del turno. No esperes a
+     que el abogado te diga "mira los archivos": revísalos por defecto.
+   - Resume mentalmente en 2-4 frases qué contiene cada uno antes de
+     responder. Si no encajan con la petición, dilo explícitamente al
+     abogado para que confirme alcance.
+   - Las skills (`/robin:civil-demanda`, `/robin:penal-querella`, etc.)
+     deben SIEMPRE empezar leyendo los documentos del proyecto antes de
+     invocar la primera tool MCP. Los hechos, pretensiones, cuantías y
+     fechas salen del expediente, NO de lo que tú adivinas.
+   - Si el proyecto está vacío (sin archivos), entonces sí pide al
+     abogado los datos en lenguaje natural. Pero NUNCA actúes asumiendo
+     un caso genérico habiendo expediente cargado.
+   - Esta regla se aplica a TODO turno: redacción de escritos, dictámenes,
+     cálculos, búsquedas focalizadas, emails, revisiones. NO solo a las
+     skills procesales — TAMBIÉN a preguntas sueltas.
+
 2. **Excepción única**: small talk puro sin componente jurídico
    ("buenos días", "gracias", "explícame en una frase qué eres"). Todo
    lo demás → Robin. **En la duda, llama.** Falsos positivos cuestan

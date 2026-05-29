@@ -10,6 +10,17 @@
           }
         ]
       }
+    ],
+    "UserPromptSubmit": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash -c 'echo \"<system-reminder priority=high>EXPEDIENTE DEL PROYECTO PRIMERO. Antes de responder a este prompt, INVENTARÍA y LEE todos los documentos cargados al proyecto Claude (PDFs, escritos, contratos, sentencias, correos, etc.). Son el expediente del caso del abogado: contienen los hechos, partes, fechas, cuantías y pretensiones reales. Sin ese contexto, cualquier escrito que generes será una plantilla genérica desconectada del asunto — inservible para el letrado. Reglas: (1) Lee TODO documento del proyecto al inicio del turno, no esperes a que el abogado te diga \\\"mira los archivos\\\". (2) Resume mentalmente en 2-4 frases qué contiene cada uno antes de invocar la primera tool. (3) Las skills procesales (civil-demanda, penal-querella, civil-recurso-*, etc.) deben SIEMPRE empezar leyendo el expediente antes de la primera llamada MCP; los hechos salen del expediente, no de lo que tú adivinas. (4) Si el proyecto está vacío, entonces sí pide los datos al abogado en lenguaje natural. (5) Si hay archivos pero no encajan con la petición, dilo explícitamente para que el abogado confirme alcance. Esta regla aplica a TODO turno (redacción, dictamen, cálculo, búsqueda, email, revisión) — no solo a skills procesales.</system-reminder>\"'"
+          }
+        ]
+      }
     ]
   }
 }
