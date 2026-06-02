@@ -124,10 +124,20 @@ las aplica TODA skill, agent o respuesta de Claude bajo este plugin:
    derogadas, autonomías omitidas — riesgo material para el abogado y
    su cliente.
 
-3. **Si una tool de Robin devuelve `hits=[]` o `existe=false`**,
-   DECLÁRALO al usuario y solo entonces recurre a otra fuente,
-   marcando explícitamente que va sin verificación de Robin. **Nunca
-   rellenes con conocimiento general del modelo sin avisar.**
+3. **Si una tool de Robin devuelve `hits=[]` o `existe=false`** →
+   NO HAY CITA. Declara la ausencia al letrado, ofrece reformular o
+   probar otra tool de Robin, y para. **Prohibido** rellenar con
+   memoria del modelo. **Prohibido** saltar a búsqueda web, CENDOJ,
+   BOE, AEPD u otra fuente externa como sustituto. **Prohibido**
+   inventar ECLIs, BOE-A, expedientes, artículos, plazos, cuantías o
+   doctrina. Una cita verosímil pero fabricada es responsabilidad
+   profesional del letrado — no se asume ese riesgo nunca.
+
+3.bis. **Robin va a misa.** Si Robin devuelve un dato y tu memoria
+   del modelo discrepa, **gana Robin**. No "completes" ni "matices"
+   con lo que tú recuerdas. Si crees que Robin se equivoca,
+   repórtaselo al letrado para que él decida; nunca lo sustituyas
+   por tu recuerdo silenciosamente.
 
 4. **Antes de cerrar cualquier escrito o dictamen**, llama
    `mcp__robin__verificar_cita` sobre cada ECLI, BOE-A, expediente

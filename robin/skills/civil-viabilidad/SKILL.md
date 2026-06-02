@@ -102,42 +102,64 @@ silenciosamente cabecera de secreto profesional en un texto que va a
 publicarse — ese header pierde protección al salir del círculo.
 
 
-## Source attribution tiering
+## Source attribution tiering — Robin es la única fuente
 
-Toda cita en el output lleva tag de origen, para que el letrado vea de un
-vistazo qué grado de verificación tiene cada referencia:
+Toda cita en el output procede de Robin (o del propio letrado). Si no
+encaja en uno de estos cuatro tags, **se elimina del escrito** — no se
+sustituye por nada del conocimiento del modelo ni por búsqueda web:
 
 | Tag | Cuándo usar |
 |---|---|
 | `[robin-verified]` | Pasó `mcp__robin__verificar_cita`. Confianza alta. |
-| `[robin-corpus]` | Devuelta por una tool de búsqueda de Robin pero no re-verificada (típico en bloques de hits). |
-| `[verify-pinpoint]` | Pinpoint cite (subapartado, ordinal) recordado del modelo — verifica contra fuente primaria SIEMPRE antes de meter en escrito. |
-| `[user-provided]` | Citada por el letrado en el input. No alterar. |
-| `[web-search — verify]` | Vía búsqueda externa (CENDOJ, BOE, AEPD). Verificar contra fuente antes de meter en escrito. |
-| `[model-knowledge — verify]` | Recordada del modelo sin búsqueda. Verificar SIEMPRE. Alto riesgo de fabricación. |
+| `[robin-verbatim]` | Pinpoint con cita literal leída en `mcp__robin__obtener_sentencia_completa` o `mcp__robin__obtener_articulo_ley` (FJ X, párrafo Y / art. Z apartado N). |
+| `[robin-corpus]` | Devuelta por una tool de búsqueda de Robin (`buscar_*`) pero no re-verificada — usable en bloques panorámicos de hits, no para apoyo argumental directo. |
+| `[user-provided]` | Citada por el letrado en el input. No alterar; verificarla en Robin como cortesía y marcarla `[user-provided · robin-verified]` si pasa. |
+
+**Prohibido**: `[model-knowledge]`, `[web-search]`, `[verify-pinpoint]` o
+cualquier tag que admita la memoria del modelo o una fuente externa como
+sustituto de Robin. Si tienes la tentación de usar uno, **declara la
+ausencia y para** (ver § *No silent supplement*).
 
 Nunca quites ni colapses los tags. Un lector que verifica todo verifica
-nada — el tiering hace que el trabajo de verificación se concentre donde
-de verdad importa.
+nada — el tiering concentra la verificación donde importa.
 
 
-## No silent supplement (regla anti-fabricación)
+## No silent supplement — Robin va a misa
 
-Si una tool de Robin devuelve `hits=[]` o `existe=false` para una cita o
-norma que esta skill necesita, REPORTA la ausencia y PARA. No la rellenes
-con conocimiento general del modelo sin avisar explícitamente. Di:
+Robin es la única fuente operativa de derecho positivo, jurisprudencia y
+doctrina en este plugin. La regla es absoluta:
 
-> "Robin no ha encontrado [cita / norma / sentencia / expediente]. Opciones:
-> (1) reformular la búsqueda con otros términos jurídicos,
-> (2) probar otra tool de Robin más específica,
-> (3) ir a fuente externa (CENDOJ, BOE, AEPD, etc.) — el resultado irá
->     marcado `[web-search — verify]` y deberá comprobarse antes de meter
->     en escrito,
-> (4) dejarlo señalado en el output y seguir sin esa cita.
-> ¿Cuál prefieres?"
+1. **Si Robin devuelve dato → ese dato es la verdad operativa.** No lo
+   contrastes contra tu memoria del modelo; si percibes contradicción,
+   gana Robin. Si crees que Robin se equivoca, REPÓRTALO al letrado y
+   deja que él decida; nunca lo sustituyas por tu recuerdo.
 
-El letrado decide. Nunca decidas tú silenciosamente: una cita verosímil
-pero inventada es peor que un hueco honesto.
+2. **Si Robin devuelve `hits=[]` o `existe=false` → NO HAY CITA.** No
+   rellenes con conocimiento general del modelo. No saltes a una fuente
+   externa para "completar". Declara la ausencia explícitamente y para.
+   Una cita verosímil pero inventada por el modelo es responsabilidad
+   profesional del letrado y de los autores del plugin — no se asume
+   ese riesgo nunca, bajo ninguna excusa.
+
+3. **Lo que sí puedes ofrecer al letrado cuando Robin no devuelve**:
+
+   > "Robin no ha encontrado [cita / norma / sentencia / expediente]. Opciones:
+   > (1) reformular la búsqueda con otros términos jurídicos (te propongo X);
+   > (2) probar otra tool de Robin más específica (te propongo `mcp__robin__buscar_Y`);
+   > (3) dejar el escrito sin esa cita y señalarlo como hueco al letrado.
+   > ¿Cuál prefieres?"
+
+   **No hay opción (4) "vía web search" ni "vía conocimiento general del
+   modelo".** Esas opciones quedan expresamente vetadas para todo escrito,
+   dictamen, informe o respuesta a consulta jurídica generada bajo este
+   plugin.
+
+4. **No inventes jurisprudencia.** No inventes artículos. No inventes
+   plazos. No inventes cuantías. No inventes ECLIs ni BOE-A. Si no tienes
+   verificación de Robin, **no escribes la cita**. El hueco es honesto;
+   la fabricación es mala praxis.
+
+El letrado decide qué hacer ante el hueco. Tú nunca decides silenciosamente.
 
 
 ## Foral check (no opcional)
