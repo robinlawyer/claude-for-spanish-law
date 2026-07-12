@@ -3,9 +3,9 @@
   "name": "claude-for-spanish-law",
   "description": "Marketplace oficial de Robin. Contiene un único plugin que cubre el ejercicio íntegro de la abogacía en España: litigación civil, mercantil y societario, contratación, protección de datos, laboral, penal, administrativo, tributario, familia y sucesiones, concursal, extranjería, seguros y tráfico, propiedad intelectual, inmobiliario y urbanismo, y compliance sectorial. Motor común: el MCP de Robin, con corpus oficial verificable (BOE, 17 boletines autonómicos, CENDOJ con ECLI, TC, TJUE, TGUE, TEDH, AEPD, Consejo de Estado, DGT, TEAC, CNMC, CNMV, BdE, TACRC, TCU, Defensor del Pueblo, DOUE) y 14 calculadoras procesales con auto-actualización IPC/IRAV/baremo/SS.",
   "owner": {
-    "name": "Robin",
+    "name": "Robin Lawyer",
     "url": "https://robinlawyer.ai",
-    "email": "soporte@robinlawyer.ai"
+    "email": "hola@robinlawyer.ai"
   },
   "plugins": [
     {
@@ -13,7 +13,7 @@
       "displayName": "Robin — Asistente Jurídico Español",
       "source": "./robin",
       "description": "Asistente jurídico para el abogado español. Más de cien skills cubren todas las grandes ramas del derecho (civil, mercantil, contratación, RGPD, laboral, penal, administrativo, tributario, familia y sucesiones, concursal, extranjería, seguros, propiedad intelectual, inmobiliario, compliance) sobre el corpus oficial verificable de Robin: BOE histórico con 855 disposiciones adicionales/transitorias/finales/derogatorias, 17 boletines autonómicos, CENDOJ con ECLI, TC, TJUE/TGUE, TEDH, AEPD por expediente, DGT consultas vinculantes, TEAC vinculante, Consejo de Estado, CNMC, CNMV, BdE, TACRC, TCU, Defensor del Pueblo y DOUE. Cero alucinación de citas (verificar_cita obligatorio antes de cerrar cualquier escrito). Detector automático de derecho foral (Cataluña, Galicia, Aragón, Navarra, País Vasco, Baleares, Valencia). 14 calculadoras (despido, alimentos, intereses moratorios, herencia, plusvalía, baremo tráfico, pena, IRAV, costas, tasa, prestación SS, plazos) con auto-update IPC/IRAV anual. Modelos CGPJ post-LO 1/2025 y 33 modelos mercantiles oficiales. Cumple con el secreto profesional: ningún dato del cliente abandona la máquina del abogado salvo lo que se envía explícitamente a Robin como consulta.",
-      "author": { "name": "Robin" }
+      "author": { "name": "Robin Lawyer" }
     }
   ]
 }
