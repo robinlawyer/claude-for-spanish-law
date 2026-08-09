@@ -8,7 +8,7 @@
 2. Asegúrate de tener cuenta en [robinlawyer.ai](https://robinlawyer.ai) con plan que incluya MCP. Si no, regístrate y suscríbete.
 3. En Claude Desktop → Ajustes → Directorio → Plugins → **Añadir marketplace**, pega:
    ```
-   https://api.robinlawyer.ai/plugins.git
+   https://github.com/robinlawyer/claude-for-spanish-law
    ```
 4. Instala el plugin:
    ```
@@ -17,21 +17,21 @@
 
    Esto instala Robin **con el MCP incluido**. No hay que añadir el conector aparte: la conexión a `api.robinlawyer.ai/mcp` ya viene declarada en el plugin. La primera skill que lo necesite te pide OAuth con tu cuenta de robinlawyer.ai (un click).
 5. **Reinicia Claude Desktop.** No es opcional.
-6. Configura el playbook del despacho:
+6. Configura el playbook del despacho. Escribe en tu primer chat:
    ```
-   /robin:cold-start-interview
+   Hola Robin
    ```
-   Tarda entre 5 y 10 minutos. Aprende cómo trabaja tu despacho — partido judicial habitual, AP/TSJ de referencia, política de costas, tono, áreas activas, vecindad civil habitual de los clientes — y escribe tu playbook editable en `~/.claude/plugins/config/claude-for-spanish-law/robin/CLAUDE.md`. Las skills lo leen antes de cada respuesta.
+   (equivale a `/robin:cold-start-interview`). Tarda entre 5 y 10 minutos. Aprende cómo trabaja tu despacho — partido judicial habitual, AP/TSJ de referencia, política de costas, tono, áreas activas, vecindad civil habitual de los clientes — y escribe tu playbook editable en `~/.claude/plugins/config/claude-for-spanish-law/robin/CLAUDE.md`. Las skills lo leen antes de cada respuesta.
 7. **Autentica el MCP de Robin** cuando la primera skill te lo pida (OAuth con tu cuenta de robinlawyer.ai). Sin autenticación, Robin para — no fabrica datos.
 
 ## Instalación en Claude Code (CLI)
 
 ```
-/plugin marketplace add https://api.robinlawyer.ai/plugins.git
+/plugin marketplace add https://github.com/robinlawyer/claude-for-spanish-law
 /plugin install robin@claude-for-spanish-law
 ```
 
-Reinicia el CLI. Luego `/robin:cold-start-interview` como arriba.
+Reinicia el CLI. Luego escribe `Hola Robin` en tu primer chat (equivale a `/robin:cold-start-interview`), como arriba.
 
 ### Instala en scope de usuario, no de proyecto
 
@@ -84,7 +84,7 @@ y, sobre todo, custodia?
 
 | Comando | Para qué sirve |
 |---|---|
-| `/robin:cold-start-interview` | Configura el playbook del despacho. Empieza por aquí siempre. |
+| `/robin:cold-start-interview` | Configura el playbook del despacho. Empieza por aquí siempre — o simplemente escribe `Hola Robin` en tu primer chat, que es equivalente. |
 | `/robin:customize` | Edita el playbook (cambios puntuales o re-onboarding). |
 | `/robin:matter-workspace` | Crea o cambia de carpeta de asunto. Aísla el contexto entre clientes. |
 | `/robin:verificar-citas` | Verifica un texto pegado: ECLI, BOE-A, expedientes AEPD/TEAC/DGT. |

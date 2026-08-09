@@ -6,7 +6,7 @@ Plugin único del marketplace `claude-for-spanish-law`. Convierte a Claude en un
 
 ### Configuración del despacho (instala primero)
 
-- `/robin:cold-start-interview` — Configuración inicial (5-10 min). Escribe el playbook del despacho.
+- `/robin:cold-start-interview` — Configuración inicial (5-10 min). Escribe el playbook del despacho. Atajo: escribe `Hola Robin` en tu primer chat (equivalente).
 - `/robin:customize` — Edita el playbook después del cold-start.
 - `/robin:matter-workspace` — Gestión de carpetas de asunto (un cliente, un caso).
 - `/robin:doctor` — Diagnóstico de conexión MCP y de playbook.

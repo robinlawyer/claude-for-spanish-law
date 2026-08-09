@@ -49,19 +49,19 @@ Inspirado en la arquitectura de [`anthropics/claude-for-legal`](https://github.c
 Ver [QUICKSTART.md](./QUICKSTART.md). En 60 segundos:
 
 ```
-/plugin marketplace add https://api.robinlawyer.ai/plugins.git
+/plugin marketplace add https://github.com/robinlawyer/claude-for-spanish-law
 /plugin install robin@claude-for-spanish-law
 ```
 
-El marketplace **se sirve desde el servidor de Robin**, no desde GitHub. Una sola instalación trae todo: skills, agents y el cableado al MCP de Robin. La primera skill abre OAuth con tu cuenta de robinlawyer.ai (un click).
+Una sola instalación trae todo: skills, agents y el cableado al MCP de Robin. La primera skill abre OAuth con tu cuenta de robinlawyer.ai (un click).
 
-Reinicia Claude Desktop. Luego:
+Reinicia Claude Desktop. Luego escribe en tu primer chat:
 
 ```
-/robin:cold-start-interview
+Hola Robin
 ```
 
-5-10 minutos para configurar el playbook del despacho (jurisdicción habitual, política de costas, tono, áreas activas, partido judicial, AP/TSJ de referencia, etc.).
+(equivale a `/robin:cold-start-interview`). 5-10 minutos para configurar el playbook del despacho (jurisdicción habitual, política de costas, tono, áreas activas, partido judicial, AP/TSJ de referencia, etc.).
 
 ## Conexión con el MCP de Robin
 

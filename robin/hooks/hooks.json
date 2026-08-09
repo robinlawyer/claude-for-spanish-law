@@ -6,7 +6,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "bash -c 'PLAYBOOK=\"$HOME/.claude/plugins/config/claude-for-spanish-law/robin/CLAUDE.md\"; if [ ! -f \"$PLAYBOOK\" ] || grep -q \"\\[PLACEHOLDER\\]\" \"$PLAYBOOK\" 2>/dev/null; then echo \"<system-reminder priority=high>El playbook del despacho Robin todavía no está configurado (falta el archivo o contiene marcadores [PLACEHOLDER]). ANTES de responder a cualquier consulta jurídica del usuario en esta sesión, salúdalo brevemente, explícale en una frase qué es Robin (asistente jurídico español con corpus oficial verificable) y ejecuta automáticamente la skill cold-start-interview para entrevistar al despacho (jurisdicción habitual, AP/TSJ referencia, política de costas, áreas activas, vecindad civil habitual, tono de escritos). Si el usuario te dice expresamente que prefiere saltarse el onboarding y probar primero, rellena el playbook con defaults sensatos (despacho de Madrid, ICAM, civil/mercantil/laboral activos, vecindad común, tono sobrio) y avísale de que puede re-correr cold-start-interview --redo cuando quiera. Esta nota desaparece en cuanto el playbook esté poblado.</system-reminder>\"; fi'"
+            "command": "bash -c 'PLAYBOOK=\"$HOME/.claude/plugins/config/claude-for-spanish-law/robin/CLAUDE.md\"; if [ ! -f \"$PLAYBOOK\" ] || grep -q \"\\[PLACEHOLDER\\]\" \"$PLAYBOOK\" 2>/dev/null; then echo \"<system-reminder>El playbook del despacho Robin todavía no está configurado (falta el archivo o contiene marcadores [PLACEHOLDER]). El atajo oficial de entrada es que el usuario escriba «Hola Robin»: equivale exactamente a /robin:cold-start-interview y arranca la entrevista de configuración (5-10 min). NO arranques el onboarding por iniciativa propia en cada chat. Si el usuario saluda con «Hola Robin», pide configurar Robin o invoca /robin:cold-start-interview, ejecuta la entrevista de inmediato. Si pide trabajo jurídico sustantivo sin configurar, dile en una línea que escriba «Hola Robin» para configurar Robin antes (o que puede saltárselo pidiendo defaults con /robin:cold-start-interview --defaults). Esta nota desaparece en cuanto el playbook esté poblado.</system-reminder>\"; fi'"
           }
         ]
       }
@@ -15,6 +15,10 @@
       {
         "matcher": "*",
         "hooks": [
+          {
+            "type": "command",
+            "command": "bash -c 'IN=$(cat 2>/dev/null); if printf \"%s\" \"$IN\" | grep -qiE \"\\\"prompt\\\"[[:space:]]*:[[:space:]]*\\\"(¡|\\\\\\\\u00a1)?hola,?[[:space:]]+robin\"; then PLAYBOOK=\"$HOME/.claude/plugins/config/claude-for-spanish-law/robin/CLAUDE.md\"; if [ ! -f \"$PLAYBOOK\" ] || grep -q \"\\[PLACEHOLDER\\]\" \"$PLAYBOOK\" 2>/dev/null; then echo \"<system-reminder>El usuario ha saludado con «Hola Robin»: es el atajo oficial de arranque de Robin. El playbook del despacho NO está configurado todavía. Ejecuta AHORA la skill /robin:cold-start-interview, sin esperar ningún input adicional del usuario.</system-reminder>\"; else echo \"<system-reminder>El usuario ha saludado con «Hola Robin». El playbook del despacho ya está configurado: lee silenciosamente $PLAYBOOK, cárgalo y úsalo con normalidad en toda la sesión. No menciones que lo has leído y no preguntes si quiere reconfigurarlo.</system-reminder>\"; fi; fi; exit 0'"
+          },
           {
             "type": "command",
             "command": "bash -c 'echo \"<system-reminder>Regla 1.bis del playbook: si el Proyecto Claude tiene archivos y aún no los has leído, INVENTARÍALOS antes de responder.</system-reminder>\"'"

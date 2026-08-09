@@ -5,9 +5,13 @@ description: >
   al despacho para configurar el playbook editable. Úsala SIN ESPERAR a que el
   usuario te lo pida cuando el archivo
   `~/.claude/plugins/config/claude-for-spanish-law/robin/CLAUDE.md` no existe o
-  contiene `[PLACEHOLDER]`. También cuando el letrado diga "configura Robin",
-  "empezamos", "onboarding", "setup", "primer uso", "vamos a empezar", "estoy
-  probando Robin por primera vez", o cualquier indicio de instalación fresca.
+  contiene `[PLACEHOLDER]`. También cuando el letrado salude con "Hola Robin"
+  (o variantes directas: "hola robin", "Hola, Robin") y el playbook no esté
+  configurado — ese saludo es el atajo oficial de entrada, exactamente
+  equivalente a escribir /robin:cold-start-interview. Y cuando diga
+  "configura Robin", "empezamos", "onboarding", "setup", "primer uso", "vamos
+  a empezar", "estoy probando Robin por primera vez", o cualquier indicio de
+  instalación fresca.
   Es la PRIMERA skill que debe correr en una instalación nueva — el resto de
   skills de Robin dependen del playbook poblado para personalizar sus respuestas
   (jurisdicción, AP/TSJ de referencia, vecindad civil, tono, política de costas).
