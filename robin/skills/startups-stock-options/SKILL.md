@@ -1,16 +1,19 @@
 ---
-name: customize
+name: startups-stock-options
 description: >
-  Edita el playbook del despacho sin re-correr toda la entrevista cold-start.
-  Úsala cuando el letrado diga "cambia el tono", "ajusta la AP de
-  referencia", "marca el área de extranjería como activa", "actualiza los
-  criterios de costas", o cualquier ajuste puntual al playbook. Útil
-  después de cambios en el despacho (nuevo socio, nueva área, mudanza de
-  partido judicial, cambio de política RGPD interna).
-argument-hint: "[sección a editar — 'tono', 'areas', 'jurisdiccion', 'costas', 'rgpd-interno', 'avisos', 'company-profile']"
+  Planes de incentivos sobre el capital de una startup: stock options, phantom
+  shares, RSU y entregas de participaciones a empleados y colaboradores.
+  Estructura del plan, vesting y cliff, good leaver y bad leaver, aspectos
+  societarios (autocartera, aumento de capital, pacto de socios), laborales y
+  fiscales, incluido el régimen específico de empresas emergentes de la Ley
+  28/2022. Úsala para diseñar, redactar o revisar un plan de incentivos, una
+  carta de concesión o las cláusulas de leaver, o cuando el letrado diga
+  "ESOP", "plan de opciones", "phantom", "vesting", "good/bad leaver",
+  "incentivos para el equipo de la startup".
+argument-hint: "[tipo de sociedad y fase + instrumento (opciones/phantom/participaciones) + beneficiarios + objetivo]"
 ---
 
-# /robin:customize
+# /robin:startups-stock-options
 
 Skill de Robin Lawyer con **receta viva**: el pipeline completo se sirve
 siempre actualizado desde el MCP de Robin. Este fichero solo contiene el
@@ -19,7 +22,7 @@ disparador; NO ejecutes nada de memoria.
 Pasos:
 
 1. Llama a la tool `obtener_skill` del MCP de Robin
-   (`mcp__robin__obtener_skill`) con `nombre: "customize"`.
+   (`mcp__robin__obtener_skill`) con `nombre: "startups-stock-options"`.
 2. SIGUE VERBATIM el `body` que devuelve: es el pipeline completo y al día
    (qué tools de Robin invocar, en qué orden, qué citas verificar y el
    formato de entrega). No improvises pasos, no cites jurisprudencia ni

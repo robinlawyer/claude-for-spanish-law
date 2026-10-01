@@ -2,7 +2,10 @@
 name: ip-infraccion
 description: >
   Acción por infracción de marca, patente, diseño, derechos de autor o
-  competencia desleal. Cesación, retirada, daños y perjuicios.
+  competencia desleal. Empieza por un TRIAJE (¿hay caso, cuánto vale y qué vía
+  conviene: nada, requerimiento, cautelares o demanda?) y sigue con cesación,
+  retirada, daños y perjuicios. Úsala también cuando el cliente diga "nos están
+  copiando", "han registrado una marca parecida", "¿podemos demandar?".
 argument-hint: "[derecho infringido + infractor + acciones a ejercitar]"
 ---
 

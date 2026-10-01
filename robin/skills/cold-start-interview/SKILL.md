@@ -15,7 +15,7 @@ description: >
   Es la PRIMERA skill que debe correr en una instalación nueva — el resto de
   skills de Robin dependen del playbook poblado para personalizar sus respuestas
   (jurisdicción, AP/TSJ de referencia, vecindad civil, tono, política de costas).
-argument-hint: "[--redo para re-entrevistar | --check-integrations para re-detectar MCPs y connectors | --area civil|laboral|... para reconfigurar solo un área | --defaults para rellenar con defaults sensatos sin entrevista]"
+argument-hint: "[--rapido para el modo de tres preguntas | --redo para retomar lo pendiente o re-entrevistar | --check-integrations para re-detectar MCPs y connectors | --area civil|laboral|... para reconfigurar solo un área | --avisos para configurar solo los avisos de fechas | --defaults para rellenar con defaults sensatos sin entrevista]"
 ---
 
 # /robin:cold-start-interview

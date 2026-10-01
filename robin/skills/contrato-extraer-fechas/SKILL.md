@@ -1,16 +1,18 @@
 ---
-name: customize
+name: contrato-extraer-fechas
 description: >
-  Edita el playbook del despacho sin re-correr toda la entrevista cold-start.
-  Úsala cuando el letrado diga "cambia el tono", "ajusta la AP de
-  referencia", "marca el área de extranjería como activa", "actualiza los
-  criterios de costas", o cualquier ajuste puntual al playbook. Útil
-  después de cambios en el despacho (nuevo socio, nueva área, mudanza de
-  partido judicial, cambio de política RGPD interna).
-argument-hint: "[sección a editar — 'tono', 'areas', 'jurisdiccion', 'costas', 'rgpd-interno', 'avisos', 'company-profile']"
+  Localiza en los contratos de un expediente (con RobinSearch, en local) las
+  fechas de vencimiento, renovación automática y preaviso, se las propone al
+  abogado en una tabla con fichero, página y cita de la cláusula, y SOLO tras
+  su confirmación las deja vigiladas con `vigilar_fechas` para que Robin avise
+  por correo. Úsala cuando el letrado diga "sácame los vencimientos de estos
+  contratos", "qué contratos se renuevan solos", "avísame antes de que venza
+  el preaviso", "calendario de renovaciones de la cartera", o al cerrar una
+  revisión documental de contratos.
+argument-hint: "[carpeta o caso indexado en RobinSearch + tipo de contratos si se conoce]"
 ---
 
-# /robin:customize
+# /robin:contrato-extraer-fechas
 
 Skill de Robin Lawyer con **receta viva**: el pipeline completo se sirve
 siempre actualizado desde el MCP de Robin. Este fichero solo contiene el
@@ -19,7 +21,7 @@ disparador; NO ejecutes nada de memoria.
 Pasos:
 
 1. Llama a la tool `obtener_skill` del MCP de Robin
-   (`mcp__robin__obtener_skill`) con `nombre: "customize"`.
+   (`mcp__robin__obtener_skill`) con `nombre: "contrato-extraer-fechas"`.
 2. SIGUE VERBATIM el `body` que devuelve: es el pipeline completo y al día
    (qué tools de Robin invocar, en qué orden, qué citas verificar y el
    formato de entrega). No improvises pasos, no cites jurisprudencia ni

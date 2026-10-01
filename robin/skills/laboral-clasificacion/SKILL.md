@@ -1,16 +1,19 @@
 ---
-name: customize
+name: laboral-clasificacion
 description: >
-  Edita el playbook del despacho sin re-correr toda la entrevista cold-start.
-  Úsala cuando el letrado diga "cambia el tono", "ajusta la AP de
-  referencia", "marca el área de extranjería como activa", "actualiza los
-  criterios de costas", o cualquier ajuste puntual al playbook. Útil
-  después de cambios en el despacho (nuevo socio, nueva área, mudanza de
-  partido judicial, cambio de política RGPD interna).
-argument-hint: "[sección a editar — 'tono', 'areas', 'jurisdiccion', 'costas', 'rgpd-interno', 'avisos', 'company-profile']"
+  Laboralidad frente a trabajo autónomo: decide si una relación de servicios es
+  laboral (falso autónomo), autónoma común o de autónomo económicamente
+  dependiente (TRADE), con los indicios de dependencia y ajenidad de la
+  doctrina del Tribunal Supremo. Úsala para revisar un contrato de prestación
+  de servicios o mercantil antes de firmarlo, para defender o atacar una
+  demanda de reconocimiento de relación laboral, ante un acta de la Inspección
+  de Trabajo, en plataformas digitales y repartidores, o cuando el letrado diga
+  "¿es un falso autónomo?", "laboralidad", "TRADE", "freelance que trabaja solo
+  para nosotros".
+argument-hint: "[descripción de la relación o contrato + posición (empresa/trabajador) + contexto (preventivo, demanda, Inspección)]"
 ---
 
-# /robin:customize
+# /robin:laboral-clasificacion
 
 Skill de Robin Lawyer con **receta viva**: el pipeline completo se sirve
 siempre actualizado desde el MCP de Robin. Este fichero solo contiene el
@@ -19,7 +22,7 @@ disparador; NO ejecutes nada de memoria.
 Pasos:
 
 1. Llama a la tool `obtener_skill` del MCP de Robin
-   (`mcp__robin__obtener_skill`) con `nombre: "customize"`.
+   (`mcp__robin__obtener_skill`) con `nombre: "laboral-clasificacion"`.
 2. SIGUE VERBATIM el `body` que devuelve: es el pipeline completo y al día
    (qué tools de Robin invocar, en qué orden, qué citas verificar y el
    formato de entrega). No improvises pasos, no cites jurisprudencia ni

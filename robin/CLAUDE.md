@@ -325,6 +325,21 @@ las respuestas que te da.
 
 ---
 
+## Avisos de fechas
+
+Robin puede avisarte por correo de plazos, renovaciones y vencimientos que le
+pidas vigilar (`vigilar_fechas`). De cada fecha guarda solo una etiqueta corta
+(sin nombres del cliente ni números de procedimiento) y la fecha. Son correo de
+servicio: no los corta la baja de comunicaciones comerciales. Cada lunes llega un
+resumen aunque no venza nada.
+
+- Días de antelación de los avisos: [PLACEHOLDER — los de Robin por defecto o los vuestros]
+- Urgente a partir de: [PLACEHOLDER]
+- Correo de avisos: [PLACEHOLDER — el de la cuenta u otro buzón del mismo dominio]
+- Resumen semanal de los lunes: [PLACEHOLDER — Sí (recomendado) / No]
+
+---
+
 ## Cierre — qué hace Robin siempre antes de devolverte un escrito
 
 1. Aplica el detector foral si el caso es civil, mercantil, contratación,

@@ -1,16 +1,18 @@
 ---
-name: customize
+name: consumo-condiciones-generales
 description: >
-  Edita el playbook del despacho sin re-correr toda la entrevista cold-start.
-  Úsala cuando el letrado diga "cambia el tono", "ajusta la AP de
-  referencia", "marca el área de extranjería como activa", "actualiza los
-  criterios de costas", o cualquier ajuste puntual al playbook. Útil
-  después de cambios en el despacho (nuevo socio, nueva área, mudanza de
-  partido judicial, cambio de política RGPD interna).
-argument-hint: "[sección a editar — 'tono', 'areas', 'jurisdiccion', 'costas', 'rgpd-interno', 'avisos', 'company-profile']"
+  Control de condiciones generales en contratos con consumidores: doble control
+  de incorporación (Ley 7/1998, LCGC) y de contenido o abusividad (TRLGDCU),
+  más el control de transparencia material. Úsala para revisar o redactar
+  condiciones generales de un empresario (web, app, suscripciones, financiación,
+  suministros, viajes), para preparar una reclamación o demanda de nulidad por
+  abusividad, o cuando el letrado diga "¿es abusiva esta cláusula?", "revisa los
+  términos y condiciones", "cláusula suelo/gastos/vencimiento anticipado",
+  "transparencia material".
+argument-hint: "[texto o fichero de las condiciones + posición (empresario/consumidor) + sector]"
 ---
 
-# /robin:customize
+# /robin:consumo-condiciones-generales
 
 Skill de Robin Lawyer con **receta viva**: el pipeline completo se sirve
 siempre actualizado desde el MCP de Robin. Este fichero solo contiene el
@@ -19,7 +21,7 @@ disparador; NO ejecutes nada de memoria.
 Pasos:
 
 1. Llama a la tool `obtener_skill` del MCP de Robin
-   (`mcp__robin__obtener_skill`) con `nombre: "customize"`.
+   (`mcp__robin__obtener_skill`) con `nombre: "consumo-condiciones-generales"`.
 2. SIGUE VERBATIM el `body` que devuelve: es el pipeline completo y al día
    (qué tools de Robin invocar, en qué orden, qué citas verificar y el
    formato de entrega). No improvises pasos, no cites jurisprudencia ni

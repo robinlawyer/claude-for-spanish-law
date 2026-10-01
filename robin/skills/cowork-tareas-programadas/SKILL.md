@@ -1,16 +1,17 @@
 ---
-name: customize
+name: cowork-tareas-programadas
 description: >
-  Edita el playbook del despacho sin re-correr toda la entrevista cold-start.
-  Úsala cuando el letrado diga "cambia el tono", "ajusta la AP de
-  referencia", "marca el área de extranjería como activa", "actualiza los
-  criterios de costas", o cualquier ajuste puntual al playbook. Útil
-  después de cambios en el despacho (nuevo socio, nueva área, mudanza de
-  partido judicial, cambio de política RGPD interna).
-argument-hint: "[sección a editar — 'tono', 'areas', 'jurisdiccion', 'costas', 'rgpd-interno', 'avisos', 'company-profile']"
+  Plantillas OPCIONALES de tareas programadas de Claude Cowork que llaman a Robin
+  como conector remoto: informe semanal de novedades del BOE y del DOUE que
+  vigila el abogado y resumen de sus fechas próximas. Son una comodidad: ningún
+  aviso de Robin depende de ellas (los avisos los manda el propio servidor de
+  Robin por correo). Úsala cuando el letrado diga "prográmame un informe
+  semanal", "tarea programada en Cowork", "quiero un resumen cada lunes en
+  Claude", "automatiza el repaso de novedades".
+argument-hint: "[qué quiere recibir (novedades, fechas próximas o ambas) + día y hora]"
 ---
 
-# /robin:customize
+# /robin:cowork-tareas-programadas
 
 Skill de Robin Lawyer con **receta viva**: el pipeline completo se sirve
 siempre actualizado desde el MCP de Robin. Este fichero solo contiene el
@@ -19,7 +20,7 @@ disparador; NO ejecutes nada de memoria.
 Pasos:
 
 1. Llama a la tool `obtener_skill` del MCP de Robin
-   (`mcp__robin__obtener_skill`) con `nombre: "customize"`.
+   (`mcp__robin__obtener_skill`) con `nombre: "cowork-tareas-programadas"`.
 2. SIGUE VERBATIM el `body` que devuelve: es el pipeline completo y al día
    (qué tools de Robin invocar, en qué orden, qué citas verificar y el
    formato de entrega). No improvises pasos, no cites jurisprudencia ni
