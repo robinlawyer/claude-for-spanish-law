@@ -1,7 +1,7 @@
 # Skill template — estándar Anthropic adaptado al derecho español
 
 Plantilla universal extraída de las 150 skills de `anthropics/claude-for-legal`,
-aplicable a las 147 skills de Robin. Toda nueva skill o rework debe seguir
+aplicable a las 143 skills de Robin. Toda nueva skill o rework debe seguir
 estos bloques en este orden.
 
 ## Frontmatter
