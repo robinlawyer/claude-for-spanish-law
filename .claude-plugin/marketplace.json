@@ -10,10 +10,12 @@
   "plugins": [
     {
       "name": "robin",
-      "displayName": "Robin — Asistente Jurídico Español",
+      "displayName": "Robin, tu CEO Jurídico",
       "source": "./robin",
-      "description": "Asistente jurídico para el abogado español. Más de cien skills cubren todas las grandes ramas del derecho (civil, mercantil, contratación, RGPD, laboral, penal, administrativo, tributario, familia y sucesiones, concursal, extranjería, seguros, propiedad intelectual, inmobiliario, compliance) sobre el corpus oficial verificable de Robin: BOE histórico con 855 disposiciones adicionales/transitorias/finales/derogatorias, 17 boletines autonómicos, CENDOJ con ECLI, TC, TJUE/TGUE, TEDH, AEPD por expediente, DGT consultas vinculantes, TEAC vinculante, Consejo de Estado, CNMC, CNMV, BdE, TACRC, TCU, Defensor del Pueblo y DOUE. Cero alucinación de citas (verificar_cita obligatorio antes de cerrar cualquier escrito). Detector automático de derecho foral (Cataluña, Galicia, Aragón, Navarra, País Vasco, Baleares, Valencia). 14 calculadoras (despido, alimentos, intereses moratorios, herencia, plusvalía, baremo tráfico, pena, IRAV, costas, tasa, prestación SS, plazos) con auto-update IPC/IRAV anual. Modelos CGPJ post-LO 1/2025 y 33 modelos mercantiles oficiales. Cumple con el secreto profesional: ningún dato del cliente abandona la máquina del abogado salvo lo que se envía explícitamente a Robin como consulta.",
-      "author": { "name": "Robin Lawyer" }
+      "description": "Infraestructura de inteligencia jurídica que convierte a tu asistente de IA en el CEO Jurídico de tu despacho: procesa tus expedientes y los cruza con el corpus oficial (BOE y boletines autonómicos, jurisprudencia con ECLI, doctrina administrativa y normativa europea) para ofrecerte diagnóstico, estrategia y escritos listos para tu validación. Calcula plazos, indemnizaciones y baremos con código determinista y verifica cada cita antes de cerrar un escrito. Tus expedientes se trabajan en local: a Robin solo llega lo que tú envías como consulta. Tú diriges el procedimiento y validas cada escrito.",
+      "author": {
+        "name": "Robin Lawyer"
+      }
     }
   ]
 }

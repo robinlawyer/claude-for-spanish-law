@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Auditoría profunda de las 127 skills + 7 agents.
+Auditoría profunda de todas las skills y agents del plugin.
 
 Comprueba todo lo que se puede sin OAuth:
 

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Aplica los bloques estructurales del template Anthropic a las 127 skills.
+Aplica los bloques estructurales del template Anthropic a todas las skills del plugin.
 
 Para cada SKILL.md:
 1. Detecta qué bloques estándar faltan.
