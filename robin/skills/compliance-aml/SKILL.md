@@ -3,7 +3,8 @@ name: compliance-aml
 description: >
   Compliance en prevención de blanqueo de capitales y financiación del
   terrorismo (Ley 10/2010 + Reglamento RD 304/2014). Identificación de
-  riesgos, KYC, SEPBLAC.
+  riesgos, KYC, SEPBLAC. El Reglamento (UE) 2024/1624 (AMLR) será aplicable desde el
+  10-7-2027 (art. 90; 10-7-2029 para las entidades del art. 3.3.n-o).
 argument-hint: "[sujeto obligado + actividad + tamaño]"
 ---
 

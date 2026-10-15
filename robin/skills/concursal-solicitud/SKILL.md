@@ -2,7 +2,8 @@
 name: concursal-solicitud
 description: >
   Solicitud de concurso voluntario o necesario (TRLC). Deudor en insolvencia
-  actual o inminente. Documentación y trámite ante Juzgado Mercantil.
+  actual o inminente. Documentación y trámite ante la Sección de lo Mercantil del Tribunal de
+  Instancia (DA 1.ª LO 1/2025).
 argument-hint: "[deudor + insolvencia + tipo voluntario/necesario]"
 ---
 

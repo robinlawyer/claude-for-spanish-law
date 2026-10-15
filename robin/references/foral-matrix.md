@@ -21,8 +21,11 @@ Libros vigentes:
 | Sisè | Obligacions i contractes | Llei 3/2017 (parcial) |
 
 **Puntos de conexión que activan CCCat:**
-- Vecindad civil catalana de cualquiera de las partes (sucesiones y
-  régimen económico matrimonial).
+- Sucesiones: vecindad civil catalana del causante al fallecer (arts. 9.8 y 16 CC).
+- Régimen económico matrimonial: el CCCat si es la ley que resulta del art. 9.2 CC
+  (ley personal común de los cónyuges al casarse; en su defecto, la elegida en
+  documento auténtico, la de la residencia habitual común inmediatamente posterior
+  o la del lugar de celebración).
 - Inmueble sito en Cataluña (derechos reales).
 - Negocio celebrado en Cataluña por parte sometida a CCCat (obligaciones
   y contratos del Llibre Sisè).
@@ -33,7 +36,7 @@ Materias propias:
 - Régimen económico matrimonial (sociedad de gananciales modificada,
   capitulaciones).
 - Sucesiones (apartación, mejora pactada, partición conjunta).
-- Casa petrucial, veciñanza, comunidad en mano común.
+- Casa patrucial y veciña (arts. 51-53 LDCG), compañía familiar gallega, comunidad en mano común.
 - Aparcerías, derechos de retracto.
 
 **Puntos de conexión:**
@@ -99,31 +102,38 @@ Materias propias:
 
 ## Comunidad Valenciana
 
-Tras la STC 82/2016 (declaró inconstitucionales las leyes valencianas
-sobre régimen económico matrimonial, custodia y arrendamientos rústicos
-por falta de competencia retroactiva), Valencia recuperó terreno con:
+El Tribunal Constitucional anuló las leyes civiles valencianas por falta
+de competencia:
 
-- **Ley 6/2024** sobre sucesiones (en vigor 2025), apoyándose en la
-  competencia recuperada vía Estatuto de Autonomía.
+- **STC 82/2016**: la Ley 10/2007, de régimen económico matrimonial
+  valenciano, entera.
+- **STC 192/2016**: la Ley 5/2011, de relaciones familiares de los hijos
+  cuyos progenitores no conviven (custodia), entera.
+- **STC 110/2016**: buena parte de la Ley 5/2012, de uniones de hecho
+  formalizadas.
+
+No existe ley valenciana de sucesiones (la Ley valenciana 6/2024 es de
+simplificación administrativa). En régimen económico matrimonial,
+custodia y sucesiones rige el Código Civil estatal; el derecho civil
+valenciano subsistente es consuetudinario y muy limitado.
 
 **Puntos de conexión:**
-- Vecindad civil valenciana de causante (sucesiones, donde aplique
-  Ley 6/2024).
-
-Robin marca como "discutible" la aplicación foral valenciana en materias
-no cubiertas por la 6/2024 hasta nuevo desarrollo legislativo.
+- Vecindad civil valenciana: compruébala, pero no presupongas norma
+  propia; búscala con `buscar_normativa` (ccaa valenciana) y, si no la
+  hay, aplica el CC.
 
 ---
 
 ## Reglas de conflicto que aplica `/robin:foral-check`
 
 1. **Personalidad de la ley civil:** la vecindad civil determina la ley
-   personal (art. 14 CC). Se aplica a sucesiones, capacidad, régimen
+   personal (art. 16.1.1.ª CC; su adquisición, art. 14 CC). Se aplica a sucesiones, capacidad, régimen
    económico matrimonial.
 2. **Lex rei sitae:** inmuebles se rigen por la ley del lugar donde
    estén sitos.
-3. **Ley elegida:** en contratos, las partes pueden elegir; en defecto,
-   ley del lugar de cumplimiento (art. 10.5 CC).
+3. **Ley elegida:** en contratos, las partes pueden elegir una ley con conexión con
+   el negocio; en defecto, ley personal (vecindad civil) común, residencia habitual
+   común y, en último término, lugar de celebración (arts. 10.5 y 16.1 CC).
 4. **Supletoriedad del CC estatal (art. 13.2 CC):** el CC suple, no
    sustituye.
 5. **Conflicto entre forales:** vecindad civil de las partes; si

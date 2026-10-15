@@ -56,7 +56,8 @@ las aplica TODA skill, agent o respuesta de Claude bajo este plugin:
    | Necesitas… | Tool Robin |
    |---|---|
    | Norma o artículo concreto | `mcp__robin__obtener_articulo_ley` |
-   | Resolución BOE íntegra (DGSJFP/DGRN, DGT, Órdenes, Circulares, Instrucciones por id `BOE-A-AAAA-NNNNN`) | `mcp__robin__obtener_resolucion_boe` |
+   | Resolución íntegra de doctrina administrativa (AEPD, CNMC, CNMV, BdE, TEAC, DGT, Consejo de Estado, TACRC, TCU, Defensor del Pueblo) | `mcp__robin__obtener_resolucion_completa` |
+   | Disposición del BOE (orden, resolución, circular) por id `BOE-A-AAAA-NNNNN` | `mcp__robin__buscar_normativa` / `mcp__robin__buscar_boe_diario`; para un artículo concreto, `mcp__robin__obtener_articulo_ley` (acepta el id de boletín) |
    | Buscar jurisprudencia | `mcp__robin__buscar_jurisprudencia` |
    | TC | `mcp__robin__buscar_tc` |
    | TJUE / TGUE / TEDH | `mcp__robin__buscar_tjue` / `_tgue` / `_tedh` |
@@ -88,7 +89,7 @@ las aplica TODA skill, agent o respuesta de Claude bajo este plugin:
    | Plusvalía municipal | `mcp__robin__calcular_plusvalia_municipal` |
    | Prestación SS | `mcp__robin__calcular_prestacion_seguridad_social` |
    | Actualización renta IRAV/IPC | `mcp__robin__calcular_actualizacion_renta` |
-   | Redacción de escrito procesal | `mcp__robin__preparar_*` (32 tipos) |
+   | Redacción de escrito procesal | `mcp__robin__preparar_*` (una por tipo de escrito) |
    | Auditoría compliance | `mcp__robin__auditar_compliance_*` (4 tipos) |
    | Análisis estratégico de caso | `mcp__robin__analizar_expediente`, `_escrito_contraparte`, `cronologia_hechos`, `mapa_documental`, `estimar_viabilidad_caso`, `generar_plan_estrategico`, `simular_oposicion` |
 
@@ -240,8 +241,9 @@ nos influye, e.g. AP Madrid Secc. 14ª]
 **Vecindad civil habitual de los clientes:** [PLACEHOLDER — común / catalana /
 gallega / aragonesa / navarra / vasca / balear / valenciana / mixta]
 
-> Robin prioriza jurisprudencia en este orden territorial: nuestra AP →
-> TSJ → AAPP del mismo TSJ → resto AAPP → TS unificador. Cuando una
+> Robin prioriza jurisprudencia en este orden territorial: TC → TS (en derecho civil propio,
+> el TSJ en casación foral) → nuestro TSJ → nuestra AP → AAPP del mismo TSJ →
+> resto AAPP. Cuando una
 > sentencia de nuestra AP contradice una de otra AP, gana la nuestra
 > salvo que TS haya unificado.
 
@@ -261,8 +263,11 @@ derecho civil propio en vigor a fecha de redacción:
 - **Navarra** — Fuero Nuevo (Ley 1/1973) — última reforma LFN 21/2019
 - **País Vasco** — Ley 5/2015 de Derecho Civil Vasco (LDCV)
 - **Islas Baleares** — Compilación de Derecho Civil (TR 79/1990)
-- **Comunidad Valenciana** — Lo recuperable tras STC 82/2016 y la Ley
-  6/2024 (sucesorio)
+- **Comunidad Valenciana** — derecho civil propio muy limitado: el TC
+  anuló la Ley 10/2007 de régimen económico matrimonial (STC 82/2016), la
+  Ley 5/2011 de relaciones familiares (STC 192/2016) y buena parte de la
+  Ley 5/2012 de uniones de hecho (STC 110/2016). No hay ley valenciana de
+  sucesiones: rige el CC salvo norma valenciana vigente que Robin localice
 
 `/robin:foral-check` aplica este test sobre un caso concreto.
 
@@ -344,7 +349,7 @@ resumen aunque no venza nada.
 
 1. Aplica el detector foral si el caso es civil, mercantil, contratación,
    familia, sucesiones o inmobiliario.
-2. Ordena jurisprudencia por jerarquía (TS > AN > TSJ > AP > Juzgado),
+2. Ordena jurisprudencia por jerarquía (TC > TS > AN > TSJ > AP > Juzgado),
    con prioridad territorial al TSJ y AP del despacho.
 3. Cita siempre con ECLI explícito junto a la referencia corta.
 4. **Lectura íntegra de cada sentencia argumental** vía

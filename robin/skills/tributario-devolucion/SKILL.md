@@ -1,7 +1,7 @@
 ---
 name: tributario-devolucion
 description: >
-  Solicitud de devolución de ingresos indebidos (arts. 31-34 LGT + RD 520/2005).
+  Solicitud de devolución de ingresos indebidos (arts. 32 y 221 LGT + RD 520/2005).
   Prescripción 4 años; intereses de demora.
 argument-hint: "[ingreso indebido + fecha + motivo]"
 ---

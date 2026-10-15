@@ -1,7 +1,9 @@
 ---
 name: compliance-esg
 description: >
-  Cumplimiento ESG: Directiva CSRD (Reglamento Delegado 2023/2772), Taxonomía
+  Cumplimiento ESG: Directiva CSRD (UE) 2022/2464 y normas ESRS (Reglamento Delegado 2023/2772), con
+  los aplazamientos de la Directiva (UE) 2025/794 (comprueba en vivo con
+  buscar_legislacion_ue si hay modificaciones posteriores), Taxonomía
   UE, CS3D (diligencia debida en sostenibilidad), normativa nacional.
 argument-hint: "[empresa + tamaño + sector + obligaciones aplicables]"
 ---

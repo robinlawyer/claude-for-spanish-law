@@ -12,12 +12,18 @@ jerarquía, con preferencia territorial al despacho cuando proceda.
 2. **Tribunal Supremo**
    - Pleno > Sala > Sección.
    - Recurso de casación, doctrina jurisprudencial, ratio decidendi.
-   - Acuerdos no jurisdiccionales del Pleno post LO 1/2025. Se localizan
+   - Acuerdos no jurisdiccionales del Pleno de Sala (art. 264 LOPJ). Se localizan
      vía `mcp__robin__buscar_jurisprudencia` con query "acuerdo no
      jurisdiccional Pleno" + fecha aproximada.
 
-3. **Audiencia Nacional (Salas)** — vinculante en su ámbito; muy
-   relevante en penal económico, contencioso y social colectivo.
+3. **Audiencia Nacional (Salas)** — muy relevante en su ámbito (penal
+   económico, contencioso, social colectivo); su doctrina no vincula a
+   los TSJ ni a las Audiencias Provinciales.
+
+   **Derecho civil foral:** la Sala de lo Civil y Penal del TSJ es el
+   tribunal de CASACIÓN cuando el recurso se funda en derecho civil propio
+   de la comunidad (art. 478.1 LEC, art. 73.1.a LOPJ): en esa materia su
+   doctrina es la que fija la interpretación y va por delante.
 
 4. **TSJ de referencia del despacho** — la doctrina del TSJ propio pesa
    más que la de otros TSJ. Robin la prioriza territorialmente.
@@ -55,7 +61,7 @@ Cuando el caso lo justifique, además de jurisprudencia:
 
 - **DGT** — consultas vinculantes vinculan a la Administración
   tributaria (art. 89 LGT).
-- **TEAC** — doctrina reiterada vincula a la Administración (art. 239.7
+- **TEAC** — doctrina reiterada vincula a la Administración (art. 239.8
   LGT).
 - **AEPD** — resoluciones por expediente; doctrina relevante en
   protección de datos.
@@ -77,17 +83,16 @@ Toda sentencia se cita en este formato:
 
 Ejemplos:
 
-> STS 1234/2024, Sala 1ª, de 15 de octubre de 2024 (rec. 1100/2023) —
-> ECLI:ES:TS:2024:5421.
+> STS 1250/2024, Sala 4ª (Pleno), de 18 de noviembre de 2024 (rcud
+> 4735/2023) — ECLI:ES:TS:2024:5454.
 >
-> STC 56/2023, de 22 de mayo (recurso de amparo 4521-2022) —
-> ECLI:ES:TC:2023:56.
+> STC 56/2023, de 22 de mayo — ECLI:ES:TC:2023:56.
 >
-> STJUE de 11 de diciembre de 2024, C-456/22, *Caso Glovo II* —
-> ECLI:EU:C:2024:1010.
+> STJUE de 14 de marzo de 2013, C-415/11, *Aziz* —
+> ECLI:EU:C:2013:164.
 >
-> SAP Barcelona 478/2025, Sección 14ª, de 7 de marzo de 2025 (rec.
-> 989/2024) — ECLI:ES:APB:2025:478.
+> SAP Barcelona 169/2025, Sección 15ª, de 29 de enero de 2025 (rec.
+> 3521/2021) — ECLI:ES:APB:2025:478.
 
 **El ECLI es obligatorio.** Una cita sin ECLI no se considera
 verificada y no aparece en el escrito final. `verificar_cita` la marca

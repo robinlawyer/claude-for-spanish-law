@@ -2,8 +2,8 @@
 name: vigilancia-plazos
 description: >
   Agent programado de vigilancia de plazos críticos en todos los matters
-  activos. Avisa de plazos con menos de 7 días (rojo) y menos de 30 días
-  (amarillo). Lee matter.md de cada matter activo.
+  activos. Avisa de plazos a 7 días o menos (rojo), de 8 a 30 (naranja) y de 31
+  a 90 (amarillo). Lee matter.md de cada matter activo.
 model: sonnet
 tools: ["Read", "mcp__robin__calculo_plazos"]
 ---

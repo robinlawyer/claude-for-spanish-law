@@ -15,7 +15,7 @@ Plugin único del marketplace `claude-for-spanish-law`. Convierte a Claude en un
 ### Transversales (core)
 
 - `/robin:verificar-citas` — Verifica ECLI, BOE-A, expedientes contra fuente oficial.
-- `/robin:jurisprudencia` — Búsqueda asistida en CENDOJ con jerarquía TS > AN > TSJ > AP.
+- `/robin:jurisprudencia` — Búsqueda asistida en CENDOJ con jerarquía TC > TS > AN > TSJ > AP.
 - `/robin:normativa` — Búsqueda asistida en BOE y 17 boletines autonómicos.
 - `/robin:foral-check` — Detector de aplicabilidad foral.
 - `/robin:plazos` — Cómputo de plazos procesales y prescripciones.

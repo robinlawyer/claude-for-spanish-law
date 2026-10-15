@@ -2,8 +2,8 @@
 name: vigilancia-doctrina-teac
 description: >
   Agent de vigilancia de doctrina TEAC. Vincula a la Administración tributaria
-  (art. 239.7 LGT); por tanto, nuevas resoluciones cambian el criterio
-  inmediatamente. Útil para despachos con cartera tributaria.
+  (art. 239.8 LGT) cuando es doctrina reiterada o fijada en unificación de criterio
+  (art. 242 LGT); una resolución aislada no cambia por sí sola el criterio. Útil para despachos con cartera tributaria.
 model: sonnet
 tools: ["Read", "mcp__robin__buscar_teac"]
 ---

@@ -2,8 +2,8 @@
 name: extranjeria-arraigo
 description: >
   Solicitudes de autorización por circunstancias excepcionales (arraigo).
-  Tras reforma RD 1155/2024: arraigo social, laboral, familiar, formación,
-  socio-formativo (nueva figura).
+  RD 1155/2024 (art. 127, red. RD 316/2026): arraigo de segunda oportunidad
+  (nueva figura), sociolaboral, social, socioformativo y familiar.
 argument-hint: "[tipo de arraigo + permanencia + circunstancias del solicitante]"
 ---
 

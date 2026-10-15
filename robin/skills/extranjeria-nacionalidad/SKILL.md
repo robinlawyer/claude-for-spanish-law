@@ -2,7 +2,10 @@
 name: extranjeria-nacionalidad
 description: >
   Adquisición de la nacionalidad española por residencia, carta de
-  naturaleza, opción, matrimonio, descendencia (Memoria Democrática).
+  naturaleza, opción, matrimonio. La opción de la DA 8.ª Ley 20/2022 (Memoria
+  Democrática) tenía plazo de dos años desde el 21-10-2022, prorrogable un año
+  (DA 8.ª.2): está cerrada; queda la carta de naturaleza del art. 33 Ley 20/2022
+  para brigadistas internacionales y sus descendientes.
 argument-hint: "[vía de adquisición + situación del solicitante]"
 ---
 

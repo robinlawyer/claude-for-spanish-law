@@ -1,8 +1,8 @@
 ---
 name: concursal-segunda-oportunidad
 description: >
-  Mecanismo de segunda oportunidad para persona natural (LSO + Libro Tercero
-  TRLC). Exoneración del pasivo insatisfecho (EPI).
+  Mecanismo de segunda oportunidad para persona natural (arts. 486 ss. TRLC,
+  Libro Primero, red. Ley 16/2022). Exoneración del pasivo insatisfecho (EPI).
 argument-hint: "[deudor persona física + pasivo + situación económica]"
 ---
 

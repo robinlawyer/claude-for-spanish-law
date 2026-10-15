@@ -1,8 +1,10 @@
 ---
 name: civil-reconvencion
 description: >
-  Demanda reconvencional dentro de la contestación (art. 406 LEC). Conexión
-  con la demanda principal o entre las mismas partes y mismo título.
+  Demanda reconvencional dentro de la contestación (art. 406 LEC). Solo se
+  admite si hay conexión con las pretensiones de la demanda principal (art. 406.1) y
+  no falta competencia objetiva ni debe ventilarse en juicio de distinto tipo (art.
+  406.2, salvo la acción conexa que por su cuantía iría al verbal).
 argument-hint: "[hechos y petición reconvencional]"
 ---
 

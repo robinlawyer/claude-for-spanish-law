@@ -2,7 +2,7 @@
 name: concursal-plan-reestructuracion
 description: >
   Diseño, negociación y homologación de plan de reestructuración (Libro
-  Segundo TRLC tras RDLey 5/2023).
+  Segundo TRLC, redactado por la Ley 16/2022).
 argument-hint: "[deudor + acreedores + clases + propuesta]"
 ---
 

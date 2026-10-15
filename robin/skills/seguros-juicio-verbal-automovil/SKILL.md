@@ -1,8 +1,8 @@
 ---
 name: seguros-juicio-verbal-automovil
 description: >
-  Juicio verbal especial del automóvil (art. 250.1.8 LEC). Acción directa
-  contra aseguradora. Procedimiento sumario y rápido.
+  Reclamación de daños de tráfico (TR Ley de RC y seguro de vehículos a motor): reclamación previa a la aseguradora y prescripción de un año (art. 7); verbal u ordinario según la cuantía (art. 250.2 LEC). Acción directa
+  contra la aseguradora (art. 76 LCS).
 argument-hint: "[accidente + perjudicado + aseguradora del causante]"
 ---
 

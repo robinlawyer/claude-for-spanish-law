@@ -50,15 +50,16 @@ RT respecto a clientes]
 **DPO designado:** [PLACEHOLDER — N/A si no aplica obligación]
 **Registro de actividades:** [PLACEHOLDER — Ruta o herramienta donde se
 mantiene]
-**Plazo de conservación de expedientes:** [PLACEHOLDER — habitualmente 5
-años por la LSCA + lo que requiera el ICAM]
+**Plazo de conservación de expedientes:** [PLACEHOLDER — si el despacho es sujeto obligado de PBC
+(art. 2.1.ñ Ley 10/2010), esa documentación diez años (art. 25.1); el resto, según la
+prescripción de la responsabilidad profesional y la normativa colegial]
 **Política frente a Robin:** [PLACEHOLDER — Cómo decidimos qué enviar a
 Robin, anonimización previa, autorizaciones del cliente]
 
 ## Política de compliance penal interna (si aplica)
 
 **¿Cuenta el despacho con programa 31 bis CP propio?:** [PLACEHOLDER]
-**Canal de denuncias interno (LO 2/2023):** [PLACEHOLDER]
+**Canal de denuncias interno (Ley 2/2023):** [PLACEHOLDER]
 **Compliance officer:** [PLACEHOLDER]
 
 ## Política de blanqueo (Ley 10/2010)

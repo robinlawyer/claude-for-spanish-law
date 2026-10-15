@@ -1,7 +1,10 @@
 ---
 name: extranjeria-asilo
 description: >
-  Protección internacional: asilo + protección subsidiaria (Ley 12/2009).
+  Protección internacional: asilo + protección subsidiaria. A las solicitudes
+  formalizadas desde el 12-6-2026 se aplica el Reglamento (UE) 2024/1348
+  (procedimiento común, art. 79.3), directamente aplicable; la Ley 12/2009, en lo
+  que no se le oponga; las formalizadas antes siguen el régimen anterior.
   Solicitud, entrevista, recursos.
 argument-hint: "[país de origen + motivos persecución + situación en España]"
 ---

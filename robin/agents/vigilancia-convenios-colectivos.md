@@ -2,8 +2,8 @@
 name: vigilancia-convenios-colectivos
 description: >
   Agent de vigilancia de convenios colectivos aplicables a clientes del
-  despacho. Avisa de denuncia, prórroga, nueva versión publicada en BOE/
-  BORM/diario autonómico.
+  despacho. Avisa de denuncia, prórroga, nueva versión publicada en BOE,
+  diario oficial autonómico o BOP (convenios provinciales).
 model: sonnet
 tools: ["Read", "mcp__robin__buscar_convenio_colectivo", "mcp__robin__buscar_normativa"]
 ---

@@ -3,7 +3,9 @@ name: laboral-despido
 description: >
   Revisión de despido (objetivo, disciplinario, improcedente, nulo). Cálculo
   de indemnización, plazos y procedencia. Preparación de papeleta SMAC y
-  demanda social.
+  demanda social. En el disciplinario, comprueba la audiencia previa (art. 7
+  Convenio 158 OIT; STS 1250/2024, Pleno, ECLI:ES:TS:2024:5454): su omisión lleva
+  a la improcedencia.
 argument-hint: "[tipo de despido + datos del trabajador + carta de despido]"
 ---
 

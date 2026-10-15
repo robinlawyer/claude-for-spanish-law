@@ -103,8 +103,9 @@ Esta skill asume jurisdicción española y, salvo que la sección
 `## Derecho foral` del playbook diga otra cosa, derecho común. Si los hechos
 tienen punto de conexión foral, lanza `/robin:foral-check` ANTES de redactar.
 Para casos transfronterizos UE, usa Reglamento Bruselas Ibis (competencia) y
-Roma I/II (ley aplicable). Para casos extra-UE, ley elegida o foro del lugar
-del demandado.
+Roma I/II (ley aplicable). Para casos extra-UE, Roma I/II se aplican igual
+(aplicación universal); competencia por Bruselas I bis si lo prevé y, si no, arts. 22
+a 22 nonies LOPJ.
 ```
 
 ## Bloque `## Workflow` con steps numerados
@@ -224,8 +225,9 @@ ANTES de aplicar Código Civil estatal, si la materia es civil / mercantil /
 contratación / familia / sucesiones / inmobiliario, comprueba punto de
 conexión foral. Si la vecindad civil de las partes o el sito de los
 inmuebles cae en Cataluña / Galicia / Aragón / Navarra / País Vasco /
-Baleares / Valencia, lanza `/robin:foral-check` y aplica la Compilación
-foral PRIMERO. CC estatal solo supletorio (art. 13.2 CC).
+Baleares / Valencia, lanza `/robin:foral-check` y aplica la norma foral PRIMERO
+(en la Comunidad Valenciana no hay Compilación: rige el CC salvo norma valenciana
+vigente que Robin localice). CC estatal solo supletorio (art. 13.2 CC).
 
 Lista de leyes forales: ver `references/foral-matrix.md`.
 ```
@@ -323,6 +325,6 @@ hechos al cliente, dejar en standby, otra).
    `mcp__robin__verificar_cita` antes de devolver.
 3. **Foral checker no opcional** en ramas civil/mercantil/contratación/
    familia/sucesiones/inmobiliario.
-4. **Jerarquía jurisprudencial**: TS > AN > TSJ > AP del despacho > resto
-   AAPP. ECLI explícito siempre.
+4. **Jerarquía jurisprudencial**: TC > TS (en derecho civil propio, TSJ en
+   casación foral) > AN > TSJ > AP del despacho > resto AAPP. ECLI explícito siempre.
 5. **Calculadoras** con auto-update IPC/IRAV/baremo (las 14 del MCP).

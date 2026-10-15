@@ -2,7 +2,9 @@
 name: civil-monitorio
 description: >
   Petición de procedimiento monitorio (arts. 812 ss LEC) para deudas dinerarias
-  vencidas, exigibles y documentadas. Sin tope de cuantía desde 2011.
+  vencidas, exigibles y documentadas. Sin tope de cuantía desde 2011. Requisito MASC (art. 5 LO 1/2025): el monitorio
+  no está entre las excepciones de los arts. 5.2 y 5.3; hay criterios judiciales
+  dispares, lo prudente es acreditar el intento (art. 264.4.º LEC).
 argument-hint: "[acreedor, deudor, importe, documentación]"
 ---
 

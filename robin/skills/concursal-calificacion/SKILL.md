@@ -1,7 +1,7 @@
 ---
 name: concursal-calificacion
 description: >
-  Pieza de calificación del concurso (arts. 442 ss TRLC). Concurso fortuito
+  Pieza de calificación del concurso (arts. 441 ss TRLC). Concurso fortuito
   o culpable; responsabilidad concursal de administradores.
 argument-hint: "[concurso + perspectiva (administración concursal, deudor, MF, parte interesada)]"
 ---

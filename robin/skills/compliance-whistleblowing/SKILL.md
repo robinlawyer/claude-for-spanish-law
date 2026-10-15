@@ -1,8 +1,10 @@
 ---
 name: compliance-whistleblowing
 description: >
-  Canal interno de denuncias (LO 2/2023). Obligatorio para entidades > 50
-  empleados, entidades públicas, partidos políticos. Configuración +
+  Canal interno de denuncias (Ley 2/2023). Obligatorio para el sector privado con
+  cincuenta o más trabajadores, los sectores del anexo de la Directiva 2019/1937
+  sea cual sea su plantilla, el sector público y partidos, sindicatos y
+  organizaciones empresariales con fondos públicos (arts. 10 y 13). Configuración +
   procedimiento + protección del informante.
 argument-hint: "[entidad + sector + tamaño]"
 ---

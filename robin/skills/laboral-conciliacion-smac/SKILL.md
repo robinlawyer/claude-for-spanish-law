@@ -2,7 +2,8 @@
 name: laboral-conciliacion-smac
 description: >
   Papeleta de conciliación previa ante el SMAC (UMAC en algunas CCAA), trámite
-  obligatorio antes de demanda social (art. 63 LRJS).
+  obligatorio antes de demanda social (art. 63 LRJS), salvo las excepciones del
+  art. 64 LRJS.
 argument-hint: "[tipo de pretensión + datos del trabajador y empresa]"
 ---
 

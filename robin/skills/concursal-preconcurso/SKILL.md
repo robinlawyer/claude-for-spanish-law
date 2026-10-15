@@ -1,7 +1,7 @@
 ---
 name: concursal-preconcurso
 description: >
-  Comunicación de apertura de negociaciones (art. 583 TRLC). Protección frente
+  Comunicación de apertura de negociaciones (arts. 583 y 585 TRLC). Protección frente
   a ejecuciones durante 3 meses (prorrogable). Negociación de plan de
   reestructuración.
 argument-hint: "[deudor + acreedores objetivo + plan tentativo]"

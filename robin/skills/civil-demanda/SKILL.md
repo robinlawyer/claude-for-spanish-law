@@ -4,7 +4,9 @@ description: >
   Redacta demanda civil completa (juicio ordinario o verbal, según cuantía y
   materia). Hechos numerados, fundamentos jurídicos, súplico, otrosíes, con
   jurisprudencia jerárquica y verificación obligatoria de citas. Aplica
-  detector foral si procede.
+  detector foral si procede. Comprueba el requisito MASC (art. 5 LO 1/2025; arts.
+  264.4.º, 399.3 y 403.2 LEC) y, frente a entidades financieras en préstamos
+  hipotecarios, la reclamación previa (arts. 439.5 y 439 bis LEC).
 argument-hint: "[hechos del caso + petición concreta + cuantía aproximada]"
 ---
 

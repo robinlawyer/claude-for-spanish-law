@@ -2,8 +2,10 @@
 name: civil-ejecucion
 description: >
   Demanda ejecutiva (arts. 517 ss LEC) por título judicial (sentencia firme,
-  auto, transacción aprobada) o extrajudicial (escritura pública, laudo,
-  título cambiario).
+  auto, transacción aprobada) o extrajudicial (escritura pública, póliza intervenida, laudo,
+  acuerdo de mediación o MASC elevado a escritura: art. 517.2 LEC). La letra, el
+  cheque y el pagaré no figuran entre los títulos del art. 517.2: se reclaman por el
+  juicio cambiario (arts. 819 ss.) u otro declarativo.
 argument-hint: "[título ejecutivo + cuantía + deudor]"
 ---
 

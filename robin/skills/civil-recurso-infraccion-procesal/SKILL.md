@@ -1,9 +1,11 @@
 ---
 name: civil-recurso-infraccion-procesal
 description: >
-  Recurso extraordinario por infracción procesal (arts. 469-476 LEC). Cuando
-  el recurso de casación se basa en quiebras procesales más que en errores
-  iuris.
+  Infracción de normas procesales en el recurso de casación civil. El recurso
+  extraordinario por infracción procesal está suprimido (arts. 468-476 LEC sin
+  contenido desde el 20-3-2024, RDL 6/2023): la infracción procesal se alega como
+  motivo de casación (art. 477.2 LEC), con denuncia previa en la instancia, de haber
+  sido posible (art. 479.2).
 argument-hint: "[sentencia AP recurrida + infracción procesal invocada]"
 ---
 

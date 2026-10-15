@@ -1,7 +1,8 @@
 ---
 name: admin-contencioso
 description: >
-  Recurso contencioso-administrativo ante Juzgados, TSJ, AN o TS (LJCA).
+  Recurso contencioso-administrativo ante la Sección de lo Contencioso del Tribunal
+  de Instancia (DA 1.ª LO 1/2025), TSJ, AN o TS (LJCA).
   Procedimiento ordinario o abreviado.
 argument-hint: "[acto recurrido + cuantía + órgano competente]"
 ---

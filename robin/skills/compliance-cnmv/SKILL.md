@@ -1,8 +1,8 @@
 ---
 name: compliance-cnmv
 description: >
-  Cumplimiento mercados de valores (LMV + Reglamento UE MiFID II + MAR +
-  Prospect Regulation). Información, abuso de mercado, OPAs, gestión de
+  Cumplimiento mercados de valores (Ley 6/2023 LMVSI + Directiva MiFID II y Reglamento MiFIR +
+  MAR + Reglamento (UE) 2017/1129 de folletos). Información, abuso de mercado, OPAs, gestión de
   fondos.
 argument-hint: "[cuestión + entidad + situación]"
 ---

@@ -1,8 +1,11 @@
 ---
 name: civil-recurso-casacion
 description: >
-  Recurso de casación civil ante el TS (Sala 1ª). Interés casacional, motivos
-  tasados, jurisprudencia consolidada del TS.
+  Recurso de casación civil (arts. 477 ss. LEC): ante la Sala 1.ª del TS o, si se
+  funda en derecho civil foral o especial propio y el Estatuto lo prevé, ante la Sala
+  de lo Civil y Penal del TSJ (art. 478.1). Interés casacional; la infracción procesal
+  es motivo de la propia casación (art. 477.2); se interpone ante el tribunal que
+  dictó la resolución en 20 días, sin preparación (art. 479.1).
 argument-hint: "[sentencia de AP recurrida + interés casacional invocado]"
 ---
 
