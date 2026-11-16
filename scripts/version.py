@@ -28,24 +28,37 @@ RE_LLAMADA = re.compile(r'(con `nombre: "[a-z0-9-]+"`)(?: y `version_plugin: "[^
 
 
 def poner(version: str) -> int:
+    """Calcula TODOS los cambios y los comprueba antes de escribir nada: o se cambia todo o
+    no se cambia nada (revisión de Codex, 16-nov-2026)."""
     if not RE_VERSION.match(version):
         raise SystemExit(f"versión no válida: {version!r} (X.Y.Z)")
+    cambios: dict[Path, str] = {}
     texto = PLUGIN.read_text(encoding="utf-8")
     nuevo, n = re.subn(r'("version"\s*:\s*")[^"]*(")', rf"\g<1>{version}\g<2>", texto, count=1)
     if n != 1:
         raise SystemExit("plugin.json sin campo version")
-    PLUGIN.write_text(nuevo, encoding="utf-8")
-    cambiadas = 0
+    json.loads(nuevo)
+    cambios[PLUGIN] = nuevo
+    errores = []
     for md in sorted(SKILLS.glob("*/SKILL.md")):
         t = md.read_text(encoding="utf-8")
         t2, k = RE_LLAMADA.subn(rf'\g<1> y `version_plugin: "{version}"`', t)
         if k != 1:
-            raise SystemExit(f"{md.relative_to(RAIZ)}: {k} llamadas a obtener_skill reconocidas (tiene que haber una)")
-        if t2 != t:
-            md.write_text(t2, encoding="utf-8")
-            cambiadas += 1
-    json.loads(PLUGIN.read_text(encoding="utf-8"))
-    print(f"plugin {version}: plugin.json y {cambiadas} disparadores")
+            errores.append(f"{md.relative_to(RAIZ)}: {k} llamadas a obtener_skill reconocidas (tiene que haber una)")
+            continue
+        # Ni restos de una versión anterior con otra redacción ni el parámetro duplicado.
+        if t2.count("version_plugin") != 1 or t2.count(f'`version_plugin: "{version}"`') != 1:
+            errores.append(f"{md.relative_to(RAIZ)}: version_plugin aparece fuera de la llamada reconocida")
+            continue
+        cambios[md] = t2
+    if errores:
+        raise SystemExit("No se ha cambiado nada:\n  " + "\n  ".join(errores))
+    escritos = 0
+    for ruta, t in cambios.items():
+        if ruta.read_text(encoding="utf-8") != t:
+            ruta.write_text(t, encoding="utf-8")
+            escritos += 1
+    print(f"plugin {version}: {escritos} ficheros cambiados ({len(cambios) - 1} disparadores revisados)")
     return 0
 
 

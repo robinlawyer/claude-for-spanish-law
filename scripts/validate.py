@@ -17,6 +17,8 @@ import re
 import sys
 from pathlib import Path
 
+MCP_FIJO = ("streamable-http", "https://api.robinlawyer.ai/mcp", None)
+
 NAME_RE = re.compile(r"^[a-z0-9][a-z0-9-]{1,63}$")
 ROOT = Path(__file__).resolve().parent.parent
 ERRORS: list[str] = []
@@ -111,8 +113,15 @@ def validate_plugin(plugin_dir: Path, marketplace_entry: dict) -> None:
     else:
         try:
             mcp_data = json.loads(mcp_path.read_text())
-            if "robin" not in mcp_data.get("mcpServers", {}):
+            robin = mcp_data.get("mcpServers", {}).get("robin")
+            if robin is None:
                 err(f"{mcp_path}: no declara MCP server 'robin'")
+            # Claude guarda el token de Robin bajo un hash de {type, url, headers}: si cambian,
+            # cada cliente tiene que volver a conectar Robin. Son fijos; el servidor vigila lo
+            # publicado cada día (plugin_version --comprobar) con la misma regla.
+            elif (robin.get("type"), robin.get("url"), robin.get("headers")) != MCP_FIJO:
+                err(f"{mcp_path}: 'robin' tiene que ser exactamente type={MCP_FIJO[0]!r}, "
+                    f"url={MCP_FIJO[1]!r} y sin headers; cambiarlo obliga a cada cliente a reconectar")
         except json.JSONDecodeError as e:
             err(f"{mcp_path}: JSON inválido: {e}")
 
