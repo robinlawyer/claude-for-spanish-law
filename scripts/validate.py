@@ -17,6 +17,11 @@ import re
 import sys
 from pathlib import Path
 
+try:
+    import yaml
+except ImportError:  # validate.py lo usa para medir las descriptions como las lee Claude
+    sys.exit("Falta PyYAML: instálalo con  python3 -m pip install pyyaml  y vuelve a validar.")
+
 MCP_FIJO = ("streamable-http", "https://api.robinlawyer.ai/mcp", None)
 
 NAME_RE = re.compile(r"^[a-z0-9][a-z0-9-]{1,63}$")
@@ -28,21 +33,18 @@ def err(msg: str) -> None:
     ERRORS.append(msg)
 
 
-def descripcion(text: str) -> str:
-    """La description del frontmatter tal como la lee YAML (revisión de Codex: nada de
-    reconstruirla a mano). El frontmatter va entre el primer `---` y el siguiente `---` en
-    línea propia."""
-    import yaml
-
-    m = re.match(r"---[ \t]*\n(.*?)\n---[ \t]*(?:\n|$)", text, re.S)
+def descripcion(text: str) -> str | None:
+    """La description del frontmatter tal como la lee YAML. None si el frontmatter falta, no
+    cierra, no es YAML válido o la description no es un texto no vacío (revisión de Codex)."""
+    m = re.match(r"---[ \t]*\r?\n(.*?)\r?\n---[ \t]*(?:\r?\n|$)", text, re.S)
     if not m:
-        return ""
+        return None
     try:
-        fm = yaml.safe_load(m.group(1)) or {}
+        fm = yaml.safe_load(m.group(1))
     except yaml.YAMLError:
-        return ""
+        return None
     d = fm.get("description") if isinstance(fm, dict) else None
-    return d if isinstance(d, str) else ""
+    return d if isinstance(d, str) and d.strip() else None
 
 
 def parse_frontmatter(text: str) -> dict | None:
@@ -173,9 +175,12 @@ def validate_plugin(plugin_dir: Path, marketplace_entry: dict) -> None:
             err(f"{skill_md}: falta 'description' en frontmatter")
         # Cowork guarda la descripción cortada a 1024 caracteres (aviso de su sincronización,
         # 16-nov-2026): lo que pase de ahí no llega a decidir cuándo se activa la skill.
-        elif len(descripcion(skill_md.read_text())) > 1024:
-            err(f"{skill_md}: description de {len(descripcion(skill_md.read_text()))} caracteres; "
-                "Cowork la corta a 1024")
+        else:
+            d = descripcion(skill_md.read_text())
+            if d is None:
+                err(f"{skill_md}: frontmatter sin cerrar, YAML inválido o description vacía / no es texto")
+            elif len(d) > 1024:
+                err(f"{skill_md}: description de {len(d)} caracteres; Cowork la corta a 1024")
         # La versión que el disparador manda a obtener_skill tiene que ser la del plugin
         # (scripts/version.py la cambia en todos los sitios; Juan, 13-nov-2026).
         vp = re.findall(r'`version_plugin: "([^"]*)"`', skill_md.read_text())

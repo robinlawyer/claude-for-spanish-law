@@ -15,6 +15,7 @@ if [ -z "${1:-}" ]; then
 fi
 
 echo "🔍 Validando antes de publicar..."
+python3 -c "import yaml" 2>/dev/null || { echo "Falta PyYAML: python3 -m pip install pyyaml"; exit 1; }
 python3 scripts/validate.py
 python3 scripts/lint-tool-scope.py
 
