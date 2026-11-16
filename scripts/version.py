@@ -60,36 +60,76 @@ def poner(version: str) -> int:
 
 
 def escribir_todo(pendientes: dict[Path, str]) -> None:
-    """Todo o nada (revisión de Codex): primero se escriben TODOS los temporales (si falla uno,
-    no se ha tocado ningún fichero); luego cada uno sustituye a su original de forma atómica
-    (os.replace) y, si una sustitución falla, se restauran los originales ya sustituidos. Si el
-    proceso muere a mitad, validate.py lo detecta y volver a lanzar este script lo completa."""
+    """Todo o nada (revisión de Codex, 3 vueltas):
+    - un BLOQUEO exclusivo (scripts/.version.lock): dos ejecuciones a la vez no se mezclan;
+    - temporales de nombre ÚNICO junto a cada fichero; si falla uno, no se ha tocado nada;
+    - COPIA EN DISCO de cada original (en .version-copia/) antes de sustituir nada;
+    - cada sustitución es atómica (os.replace); si una falla, se restauran TODOS los ya
+      sustituidos, aunque falle alguno, y se dice cuáles quedan pendientes. Las copias solo se
+      borran si todo ha ido bien: con ellas se recupera a mano si el proceso muere a mitad
+      (validate.py lo detecta)."""
+    import fcntl
     import os
+    import shutil
+    import uuid
 
-    originales = {r: r.read_bytes() for r in pendientes}
-    temporales: dict[Path, Path] = {}
-    try:
-        for r, t in pendientes.items():
-            tmp = r.with_name(r.name + ".version-tmp")
-            tmp.write_text(t, encoding="utf-8")
-            temporales[r] = tmp
-    except Exception:
-        for tmp in temporales.values():
-            tmp.unlink(missing_ok=True)
-        raise
-    hechos: list[Path] = []
-    try:
-        for r, tmp in temporales.items():
-            os.replace(tmp, r)
-            hechos.append(r)
-    except Exception:
-        for r in hechos:
-            vuelta = r.with_name(r.name + ".version-tmp")
-            vuelta.write_bytes(originales[r])
-            os.replace(vuelta, r)
-        for tmp in temporales.values():
-            tmp.unlink(missing_ok=True)
-        raise SystemExit("No se ha cambiado nada: falló una escritura y se han restaurado los originales.")
+    if not pendientes:
+        return
+    marca = uuid.uuid4().hex[:12]
+    copia_dir = RAIZ / ".version-copia" / marca
+    with open(RAIZ / "scripts" / ".version.lock", "w") as cerrojo:
+        try:
+            fcntl.flock(cerrojo, fcntl.LOCK_EX | fcntl.LOCK_NB)
+        except BlockingIOError:
+            raise SystemExit("Hay otra ejecución de version.py en marcha: no se ha cambiado nada.")
+        # Releer bajo el bloqueo: si otro proceso cambió algo entre medias, se para.
+        for r in pendientes:
+            if not r.exists():
+                raise SystemExit(f"No se ha cambiado nada: {r.relative_to(RAIZ)} ha desaparecido.")
+        copias: dict[Path, Path] = {}
+        temporales: dict[Path, Path] = {}
+        try:
+            for r, t in pendientes.items():
+                c = copia_dir / r.relative_to(RAIZ)
+                c.parent.mkdir(parents=True, exist_ok=True)
+                shutil.copy2(r, c)
+                copias[r] = c
+                tmp = r.with_name(f"{r.name}.{marca}.tmp")
+                tmp.write_text(t, encoding="utf-8")
+                temporales[r] = tmp
+        except Exception:
+            for tmp in temporales.values():
+                tmp.unlink(missing_ok=True)
+            shutil.rmtree(copia_dir, ignore_errors=True)
+            raise
+        hechos: list[Path] = []
+        try:
+            for r, tmp in temporales.items():
+                os.replace(tmp, r)
+                hechos.append(r)
+        except Exception as e:
+            sin_restaurar = []
+            for r in hechos:
+                try:
+                    vuelta = r.with_name(f"{r.name}.{marca}.vuelta")
+                    shutil.copy2(copias[r], vuelta)
+                    os.replace(vuelta, r)
+                except Exception:  # noqa: BLE001
+                    vuelta.unlink(missing_ok=True)
+                    sin_restaurar.append(str(r.relative_to(RAIZ)))
+            for tmp in temporales.values():
+                tmp.unlink(missing_ok=True)
+            if sin_restaurar:
+                raise SystemExit(
+                    f"Falló una escritura ({e}) y NO se han podido restaurar: {', '.join(sin_restaurar)}. "
+                    f"Los originales están en {copia_dir.relative_to(RAIZ)}/.")
+            shutil.rmtree(copia_dir, ignore_errors=True)
+            raise SystemExit(f"No se ha cambiado nada: falló una escritura ({e}) y se han restaurado los originales.")
+        shutil.rmtree(copia_dir, ignore_errors=True)
+        try:
+            (RAIZ / ".version-copia").rmdir()
+        except OSError:
+            pass
 
 
 if __name__ == "__main__":

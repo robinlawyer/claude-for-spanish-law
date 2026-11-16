@@ -1,0 +1,5 @@
+
+# scripts/version.py
+.version-copia/
+scripts/.version.lock
+*.tmp
