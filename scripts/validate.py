@@ -29,13 +29,20 @@ def err(msg: str) -> None:
 
 
 def descripcion(text: str) -> str:
-    """La description del frontmatter, también en bloque YAML (`>`, `>-`, `|`), en una línea."""
-    fm = text.split("---", 2)[1] if text.startswith("---") else ""
-    m = re.search(r"^description:[ \t]*(?:[>|][-+]?)?[ \t]*\n((?:[ \t]+.*\n?)+)", fm, re.M)
-    if m:
-        return " ".join(m.group(1).split())
-    m = re.search(r"^description:[ \t]*(.+)$", fm, re.M)
-    return " ".join(m.group(1).strip().strip("\"'").split()) if m else ""
+    """La description del frontmatter tal como la lee YAML (revisión de Codex: nada de
+    reconstruirla a mano). El frontmatter va entre el primer `---` y el siguiente `---` en
+    línea propia."""
+    import yaml
+
+    m = re.match(r"---[ \t]*\n(.*?)\n---[ \t]*(?:\n|$)", text, re.S)
+    if not m:
+        return ""
+    try:
+        fm = yaml.safe_load(m.group(1)) or {}
+    except yaml.YAMLError:
+        return ""
+    d = fm.get("description") if isinstance(fm, dict) else None
+    return d if isinstance(d, str) else ""
 
 
 def parse_frontmatter(text: str) -> dict | None:

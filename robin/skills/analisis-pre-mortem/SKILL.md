@@ -6,11 +6,13 @@ description: >-
   impacto, con señales tempranas (tripwires) y mitigaciones. Cada modo de fallo
   jurídico se verifica en el MCP de Robin (vigencia, jurisprudencia contraria, plazos)
   — nunca de memoria. Úsala SIEMPRE que el usuario pida "pre-mortem", "premortem",
-  "asume que ha salido mal", "por qué podría fracasar", "qué puede salir mal",
-  "stress-test de riesgos", "red team esto", "antes de presentar/lanzar/comprar dime
-  los riesgos", o cuando vaya a tomar una decisión de calado (presentar un escrito,
-  lanzar una oferta, comprar deuda o un activo, aceptar un convenio, firmar un SPA).
-  Dispárala también ante exceso de optimismo en un plan, aunque no diga "pre-mortem".
+  "análisis pre-mortem", "asume que ha salido mal", "por qué podría fracasar", "qué
+  puede salir mal", "stress-test de riesgos", "red team esto", "antes de
+  presentar/lanzar/comprar dime los riesgos", o cuando esté a punto de tomar una
+  decisión de calado (presentar un escrito, lanzar una oferta de levantamiento,
+  comprar deuda o un activo, aceptar un convenio, firmar un SPA) y convenga estresarla
+  antes de comprometerse. Dispárala también cuando detectes exceso de optimismo en un
+  plan y ayude anticipar los modos de fallo, aunque el usuario no diga "pre-mortem".
 argument-hint: "[operación, escrito o decisión a estresar antes de comprometerse]"
 ---
 

@@ -6,13 +6,14 @@ description: >-
   ejecutivo accionable (decisiones tomadas y pendientes, riesgos vivos, quién tiene la
   pelota) y desarrolla el estado con registro técnico alto (articulado, NIFs,
   importes, cifras). Úsala SIEMPRE que el usuario pida "informe interno", "informe al
-  equipo", "resumen ejecutivo interno", "estado del asunto para el equipo", "pon al
-  equipo al día", "nota interna de situación", "briefing interno", "traspaso de
-  asunto", o haya que coordinar al equipo, preparar una reunión o dejar constancia del
-  estado y las acciones pendientes de un frente. Es lo OPUESTO al informe al cliente.
-  Si el asunto toca la exposición personal del usuario, señálalo: su interés ≠ el del
-  grupo. No lo improvises como resumen plano: consulta esta skill (resumen ejecutivo,
-  estado por frente, riesgos por gravedad, acciones con responsable y fecha).
+  equipo", "resumen ejecutivo interno", "estado del asunto para el equipo", "informe
+  de situación interno", "pon al equipo al día", "nota interna de situación",
+  "briefing interno", "traspaso de asunto", o haya que coordinar al equipo, preparar
+  una reunión o dejar constancia del estado y las acciones pendientes de un frente. Es
+  lo OPUESTO al informe al cliente. Si el asunto toca la exposición personal del
+  usuario, señálalo: su interés ≠ el del grupo. No lo improvises como resumen plano:
+  consulta esta skill (resumen ejecutivo, estado por frente, riesgos por gravedad,
+  acciones con responsable y fecha).
 ---
 
 # /robin:informe-interno

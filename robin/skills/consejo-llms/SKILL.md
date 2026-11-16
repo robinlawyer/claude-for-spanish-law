@@ -8,11 +8,12 @@ description: >-
   mismo modelo), aquí la diversidad es de MODELO: cada consejero es un tier de Claude
   distinto (Opus, Sonnet, Fable, Haiku). Úsala SIEMPRE que el usuario pida "consejo de
   LLMs", "consejo de modelos", "council of LLMs", "que respondan varios modelos",
-  "compara modelos", "ensemble de modelos", "segunda opinión de otro modelo",
-  "contrasta esto con otro LLM", o quiera reducir el riesgo de alucinación o sesgo de
-  un solo modelo en algo de calado (un dictamen, una tesis dudosa, una cifra crítica,
-  una decisión irreversible), aunque no diga "consejo de LLMs". No improvises la
-  respuesta multi-modelo: consulta esta skill.
+  "compara modelos", "qué dicen distintos modelos", "ensemble de modelos", "segunda
+  opinión de otro modelo", "contrasta esto con otro LLM", o quiera reducir el riesgo
+  de alucinación o sesgo de un solo modelo en algo de calado (un dictamen, una tesis
+  dudosa, una cifra crítica, una decisión irreversible). Dispárala también cuando
+  quiera un veredicto más robusto que el de un solo modelo, aunque no diga "consejo de
+  LLMs". No improvises la respuesta multi-modelo: consulta esta skill.
 ---
 
 # /robin:consejo-llms

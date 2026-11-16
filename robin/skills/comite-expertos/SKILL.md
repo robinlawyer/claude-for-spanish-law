@@ -5,14 +5,15 @@ description: >-
   activo o estrategia desde perfiles profesionales independientes y enfrentados, y
   sintetiza consenso, discrepancias y una recomendación accionable. Cada perfil
   jurídico ancla sus citas en el MCP de Robin (buscar_*, obtener_*, verificar_cita,
-  simular_oposicion) — nunca de memoria. Úsala SIEMPRE que el usuario pida "comité de
-  expertos", "panel de expertos", "comité", "varios puntos de vista", "opinión
-  multidisciplinar", "que lo miren distintos perfiles", "devil's advocate múltiple",
-  "mesa redonda", o plantee una decisión de calado (¿presento este escrito?, ¿lanzo
-  esta oferta?, ¿compro este activo?, ¿acepto este convenio?) que convenga contrastar
-  con perfiles distintos (concursalista, fiscalista, litigador, laboralista,
-  magistrado hipotético…). Dispárala también para estresar una tesis única, aunque no
-  diga "comité".
+  simular_oposicion) — nunca de memoria. Úsala SIEMPRE que el usuario pida "opinión
+  del comité de expertos", "panel de expertos", "comité", "varios puntos de vista",
+  "opinión multidisciplinar", "que lo miren distintos perfiles", "devil's advocate
+  múltiple", "mesa redonda", o plantee una decisión de calado (¿presento este
+  escrito?, ¿lanzo esta oferta?, ¿compro este activo?, ¿acepto este convenio?, ¿qué
+  estrategia sigo?) que convenga contrastar con perfiles distintos (concursalista,
+  fiscalista, litigador, laboralista, magistrado hipotético…). Dispárala también
+  cuando quiera estresar una tesis única contrastándola con perfiles que discrepen,
+  aunque no diga "comité".
 argument-hint: "[decisión, operación, escrito u oferta a someter al panel]"
 ---
 
