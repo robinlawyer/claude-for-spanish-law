@@ -53,13 +53,43 @@ def poner(version: str) -> int:
         cambios[md] = t2
     if errores:
         raise SystemExit("No se ha cambiado nada:\n  " + "\n  ".join(errores))
-    escritos = 0
-    for ruta, t in cambios.items():
-        if ruta.read_text(encoding="utf-8") != t:
-            ruta.write_text(t, encoding="utf-8")
-            escritos += 1
-    print(f"plugin {version}: {escritos} ficheros cambiados ({len(cambios) - 1} disparadores revisados)")
+    pendientes = {r: t for r, t in cambios.items() if r.read_text(encoding="utf-8") != t}
+    escribir_todo(pendientes)
+    print(f"plugin {version}: {len(pendientes)} ficheros cambiados ({len(cambios) - 1} disparadores revisados)")
     return 0
+
+
+def escribir_todo(pendientes: dict[Path, str]) -> None:
+    """Todo o nada (revisión de Codex): primero se escriben TODOS los temporales (si falla uno,
+    no se ha tocado ningún fichero); luego cada uno sustituye a su original de forma atómica
+    (os.replace) y, si una sustitución falla, se restauran los originales ya sustituidos. Si el
+    proceso muere a mitad, validate.py lo detecta y volver a lanzar este script lo completa."""
+    import os
+
+    originales = {r: r.read_bytes() for r in pendientes}
+    temporales: dict[Path, Path] = {}
+    try:
+        for r, t in pendientes.items():
+            tmp = r.with_name(r.name + ".version-tmp")
+            tmp.write_text(t, encoding="utf-8")
+            temporales[r] = tmp
+    except Exception:
+        for tmp in temporales.values():
+            tmp.unlink(missing_ok=True)
+        raise
+    hechos: list[Path] = []
+    try:
+        for r, tmp in temporales.items():
+            os.replace(tmp, r)
+            hechos.append(r)
+    except Exception:
+        for r in hechos:
+            vuelta = r.with_name(r.name + ".version-tmp")
+            vuelta.write_bytes(originales[r])
+            os.replace(vuelta, r)
+        for tmp in temporales.values():
+            tmp.unlink(missing_ok=True)
+        raise SystemExit("No se ha cambiado nada: falló una escritura y se han restaurado los originales.")
 
 
 if __name__ == "__main__":
