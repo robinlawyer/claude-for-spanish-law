@@ -28,6 +28,19 @@ RE_LLAMADA = re.compile(r'(con `nombre: "[a-z0-9-]+"`)(?: y `version_plugin: "[^
 
 
 def poner(version: str) -> int:
+    """Con el BLOQUEO tomado desde antes de leer nada hasta terminar de escribir (revisión de
+    Codex, 4.ª vuelta): dos ejecuciones a la vez no pueden mezclarse."""
+    import fcntl
+
+    with open(RAIZ / "scripts" / ".version.lock", "w") as cerrojo:
+        try:
+            fcntl.flock(cerrojo, fcntl.LOCK_EX | fcntl.LOCK_NB)
+        except BlockingIOError:
+            raise SystemExit("Hay otra ejecución de version.py en marcha: no se ha cambiado nada.")
+        return _poner(version)
+
+
+def _poner(version: str) -> int:
     """Calcula TODOS los cambios y los comprueba antes de escribir nada: o se cambia todo o
     no se cambia nada (revisión de Codex, 16-nov-2026)."""
     if not RE_VERSION.match(version):
@@ -61,14 +74,13 @@ def poner(version: str) -> int:
 
 def escribir_todo(pendientes: dict[Path, str]) -> None:
     """Todo o nada (revisión de Codex, 3 vueltas):
-    - un BLOQUEO exclusivo (scripts/.version.lock): dos ejecuciones a la vez no se mezclan;
+    - el BLOQUEO exclusivo (scripts/.version.lock) lo toma poner() antes de leer nada;
     - temporales de nombre ÚNICO junto a cada fichero; si falla uno, no se ha tocado nada;
     - COPIA EN DISCO de cada original (en .version-copia/) antes de sustituir nada;
     - cada sustitución es atómica (os.replace); si una falla, se restauran TODOS los ya
       sustituidos, aunque falle alguno, y se dice cuáles quedan pendientes. Las copias solo se
       borran si todo ha ido bien: con ellas se recupera a mano si el proceso muere a mitad
       (validate.py lo detecta)."""
-    import fcntl
     import os
     import shutil
     import uuid
@@ -77,12 +89,7 @@ def escribir_todo(pendientes: dict[Path, str]) -> None:
         return
     marca = uuid.uuid4().hex[:12]
     copia_dir = RAIZ / ".version-copia" / marca
-    with open(RAIZ / "scripts" / ".version.lock", "w") as cerrojo:
-        try:
-            fcntl.flock(cerrojo, fcntl.LOCK_EX | fcntl.LOCK_NB)
-        except BlockingIOError:
-            raise SystemExit("Hay otra ejecución de version.py en marcha: no se ha cambiado nada.")
-        # Releer bajo el bloqueo: si otro proceso cambió algo entre medias, se para.
+    if True:  # el bloqueo lo tiene poner() desde antes de leer
         for r in pendientes:
             if not r.exists():
                 raise SystemExit(f"No se ha cambiado nada: {r.relative_to(RAIZ)} ha desaparecido.")
@@ -115,10 +122,16 @@ def escribir_todo(pendientes: dict[Path, str]) -> None:
                     shutil.copy2(copias[r], vuelta)
                     os.replace(vuelta, r)
                 except Exception:  # noqa: BLE001
-                    vuelta.unlink(missing_ok=True)
                     sin_restaurar.append(str(r.relative_to(RAIZ)))
+                    try:
+                        vuelta.unlink(missing_ok=True)
+                    except Exception:  # noqa: BLE001
+                        sin_restaurar.append(f"(quedó {vuelta.relative_to(RAIZ)})")
             for tmp in temporales.values():
-                tmp.unlink(missing_ok=True)
+                try:
+                    tmp.unlink(missing_ok=True)
+                except Exception:  # noqa: BLE001
+                    pass
             if sin_restaurar:
                 raise SystemExit(
                     f"Falló una escritura ({e}) y NO se han podido restaurar: {', '.join(sin_restaurar)}. "
