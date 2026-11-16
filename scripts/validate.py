@@ -28,6 +28,16 @@ def err(msg: str) -> None:
     ERRORS.append(msg)
 
 
+def descripcion(text: str) -> str:
+    """La description del frontmatter, también en bloque YAML (`>`, `>-`, `|`), en una línea."""
+    fm = text.split("---", 2)[1] if text.startswith("---") else ""
+    m = re.search(r"^description:[ \t]*(?:[>|][-+]?)?[ \t]*\n((?:[ \t]+.*\n?)+)", fm, re.M)
+    if m:
+        return " ".join(m.group(1).split())
+    m = re.search(r"^description:[ \t]*(.+)$", fm, re.M)
+    return " ".join(m.group(1).strip().strip("\"'").split()) if m else ""
+
+
 def parse_frontmatter(text: str) -> dict | None:
     if not text.startswith("---"):
         return None
@@ -154,6 +164,11 @@ def validate_plugin(plugin_dir: Path, marketplace_entry: dict) -> None:
             continue
         if "description" not in fm:
             err(f"{skill_md}: falta 'description' en frontmatter")
+        # Cowork guarda la descripción cortada a 1024 caracteres (aviso de su sincronización,
+        # 16-nov-2026): lo que pase de ahí no llega a decidir cuándo se activa la skill.
+        elif len(descripcion(skill_md.read_text())) > 1024:
+            err(f"{skill_md}: description de {len(descripcion(skill_md.read_text()))} caracteres; "
+                "Cowork la corta a 1024")
         # La versión que el disparador manda a obtener_skill tiene que ser la del plugin
         # (scripts/version.py la cambia en todos los sitios; Juan, 13-nov-2026).
         vp = re.findall(r'`version_plugin: "([^"]*)"`', skill_md.read_text())

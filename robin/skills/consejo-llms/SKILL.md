@@ -2,24 +2,17 @@
 name: consejo-llms
 argument-hint: [pregunta o tesis a someter al consejo]
 description: >-
-  Convoca un consejo de varios modelos de lenguaje (LLMs) reales para que cada
-  uno responda a la MISMA pregunta de forma independiente y a ciegas, y después
-  sintetiza consenso, discrepancias y una recomendación única. A diferencia de
-  comite-expertos —que simula perfiles profesionales con un mismo modelo— aquí
-  la diversidad es de MODELO: cada consejero es un tier de Claude distinto (Opus,
-  Sonnet, Fable, Haiku) que razona con una arquitectura y un temple propios.
-  Úsala SIEMPRE que el usuario pida "consejo de LLMs", "consejo de modelos",
-  "council of LLMs", "que respondan varios modelos", "compara modelos", "qué
-  dicen distintos modelos", "ensemble de modelos", "segunda opinión de otro
-  modelo", "contrasta esto con otro LLM", o cuando quiera reducir el riesgo de
-  alucinación o de sesgo de un único modelo en una respuesta de calado
-  (un dictamen, una tesis jurídica dudosa, una cifra crítica, una decisión
-  irreversible). Dispárala también cuando el usuario quiera un veredicto más
-  robusto que el de un solo modelo, aunque no diga literalmente "consejo de
-  LLMs". NO improvises la respuesta multi-modelo de memoria: esta skill fija el
-  método (fan-out real a varios modelos ciegos entre sí, detección de consenso vs.
-  divergencia, arbitraje razonado) que un único hilo no puede dar por definición
-  — consúltala en vez de responder directamente.
+  Convoca un consejo de varios modelos de lenguaje reales que responden a la MISMA
+  pregunta de forma independiente y a ciegas, y sintetiza consenso, discrepancias y
+  una recomendación única. A diferencia de comite-expertos (perfiles simulados con un
+  mismo modelo), aquí la diversidad es de MODELO: cada consejero es un tier de Claude
+  distinto (Opus, Sonnet, Fable, Haiku). Úsala SIEMPRE que el usuario pida "consejo de
+  LLMs", "consejo de modelos", "council of LLMs", "que respondan varios modelos",
+  "compara modelos", "ensemble de modelos", "segunda opinión de otro modelo",
+  "contrasta esto con otro LLM", o quiera reducir el riesgo de alucinación o sesgo de
+  un solo modelo en algo de calado (un dictamen, una tesis dudosa, una cifra crítica,
+  una decisión irreversible), aunque no diga "consejo de LLMs". No improvises la
+  respuesta multi-modelo: consulta esta skill.
 ---
 
 # /robin:consejo-llms
