@@ -15,7 +15,7 @@ disparador; NO ejecutes nada de memoria.
 Pasos:
 
 1. Llama a la tool `obtener_skill` del MCP de Robin
-   (`mcp__robin__obtener_skill`) con `nombre: "contrato-distribucion"`.
+   (`mcp__robin__obtener_skill`) con `nombre: "contrato-distribucion"` y `version_plugin: "2.5.6"`.
 2. SIGUE VERBATIM el `body` que devuelve: es el pipeline completo y al día
    (qué tools de Robin invocar, en qué orden, qué citas verificar y el
    formato de entrega). No improvises pasos, no cites jurisprudencia ni

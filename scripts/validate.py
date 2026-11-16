@@ -102,6 +102,8 @@ def validate_plugin(plugin_dir: Path, marketplace_entry: dict) -> None:
                 f"({plugin_data.get(field)!r} vs {marketplace_entry.get(field)!r})"
             )
 
+    # La conexión no cambia con la versión: cabeceras o dirección distintas obligan a cada cliente
+    # a volver a conectar Robin (prueba en Cowork, 26-oct-2026).
     # .mcp.json
     mcp_path = plugin_dir / ".mcp.json"
     if not mcp_path.exists():
@@ -143,6 +145,12 @@ def validate_plugin(plugin_dir: Path, marketplace_entry: dict) -> None:
             continue
         if "description" not in fm:
             err(f"{skill_md}: falta 'description' en frontmatter")
+        # La versión que el disparador manda a obtener_skill tiene que ser la del plugin
+        # (scripts/version.py la cambia en todos los sitios; Juan, 13-nov-2026).
+        vp = re.findall(r'`version_plugin: "([^"]*)"`', skill_md.read_text())
+        if vp != [plugin_data.get("version")]:
+            err(f"{skill_md}: version_plugin {vp} no coincide con plugin.json "
+                f"({plugin_data.get('version')!r}); usa scripts/version.py")
         if "name" in fm and fm["name"] != skill_subdir.name:
             err(
                 f"{skill_md}: frontmatter name '{fm['name']}' "
