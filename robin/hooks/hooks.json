@@ -21,7 +21,7 @@
           },
           {
             "type": "command",
-            "command": "bash -c 'echo \"<system-reminder>Regla 1.bis del playbook: si el Proyecto Claude tiene archivos y aún no los has leído, INVENTARÍALOS antes de responder.</system-reminder>\"'"
+            "command": "bash -c 'echo \"<system-reminder>Si el proyecto tiene documentos adjuntos que aún no has leído, léelos antes de responder. Es una comprobación interna: no la anuncies ni la comentes al abogado.</system-reminder>\"'"
           }
         ]
       }
