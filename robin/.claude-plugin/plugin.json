@@ -2,7 +2,7 @@
   "name": "robin",
   "displayName": "Robin, tu CEO Jurídico",
   "version": "2.5.7",
-  "description": "Infraestructura de inteligencia jurídica que convierte a tu asistente de IA en el CEO Jurídico de tu despacho: cruza tus expedientes con el corpus oficial (BOE y boletines autonómicos, jurisprudencia con ECLI, doctrina administrativa y normativa europea) para darte diagnóstico, estrategia y escritos listos para validar. Calcula plazos, indemnizaciones y baremos con código determinista y verifica cada cita. Tus expedientes se trabajan en local: a Robin solo llega lo que envías como consulta.",
+  "description": "Infraestructura de inteligencia jurídica que convierte a tu IA en el CEO Jurídico de tu despacho: cruza tus expedientes con el corpus oficial (BOE y boletines autonómicos, jurisprudencia con ECLI, doctrina administrativa y normativa europea) y te da diagnóstico, estrategia y escritos. Calcula plazos, indemnizaciones y baremos con código determinista y verifica cada cita antes de cerrar un escrito. Tus expedientes se trabajan en local: a Robin solo llega tu consulta. Tú diriges y validas.",
   "author": {
     "name": "Robin Lawyer",
     "url": "https://robinlawyer.ai",
