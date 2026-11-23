@@ -61,7 +61,7 @@ Reinicia Claude Desktop. Luego escribe en tu primer chat:
 Hola Robin
 ```
 
-(equivale a `/robin:cold-start-interview`). 5-10 minutos para configurar el playbook del despacho (jurisdicción habitual, política de costas, tono, áreas activas, partido judicial, AP/TSJ de referencia, etc.).
+(equivale a `/robin:cold-start-interview`). Son tres preguntas rápidas (despacho y áreas, tribunales de referencia y tono); el resto del playbook (política de costas, confidencialidad, avisos, escritos modelo…) se completa cuando quieras con `/robin:cold-start-interview --redo`.
 
 ## Conexión con el MCP de Robin
 

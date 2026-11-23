@@ -1,20 +1,20 @@
 ---
 name: cold-start-interview
 description: >
-  ARRANCA AUTOMÁTICAMENTE en la primera sesión tras instalar Robin: entrevista
-  al despacho para configurar el playbook editable. Úsala SIN ESPERAR a que el
-  usuario te lo pida cuando el archivo
-  `~/.claude/plugins/config/claude-for-spanish-law/robin/CLAUDE.md` no existe o
-  contiene `[PLACEHOLDER]`. También cuando el letrado salude con "Hola Robin"
-  (o variantes directas: "hola robin", "Hola, Robin") y el playbook no esté
-  configurado — ese saludo es el atajo oficial de entrada, exactamente
-  equivalente a escribir /robin:cold-start-interview. Y cuando diga
-  "configura Robin", "empezamos", "onboarding", "setup", "primer uso", "vamos
-  a empezar", "estoy probando Robin por primera vez", o cualquier indicio de
-  instalación fresca.
-  Es la PRIMERA skill que debe correr en una instalación nueva — el resto de
-  skills de Robin dependen del playbook poblado para personalizar sus respuestas
-  (jurisdicción, AP/TSJ de referencia, vecindad civil, tono, política de costas).
+  Entrevista inicial al despacho para configurar el playbook editable
+  (`~/.claude/plugins/config/claude-for-spanish-law/robin/CLAUDE.md`): tres
+  preguntas rápidas (despacho, tribunales de referencia y tono). Úsala cuando
+  el letrado salude con "Hola Robin" (o variantes directas: "hola robin",
+  "Hola, Robin") y la entrevista no esté hecha — ese saludo es el atajo
+  oficial de entrada, exactamente equivalente a escribir
+  /robin:cold-start-interview. Y cuando diga "configura Robin", "onboarding",
+  "setup", "primer uso", "vamos a empezar" o "estoy probando Robin por primera
+  vez". La entrevista está hecha si el playbook ya tiene el nombre del
+  despacho, aunque le queden [PLACEHOLDER], salvo que su primera línea diga
+  «Configuración: a medias». NO la arranques por tu cuenta
+  mientras el abogado te pide otro trabajo: Robin funciona igual sin
+  configurar y las skills usan valores por defecto sensatos (jurisdicción,
+  AP/TSJ de referencia, vecindad civil, tono, política de costas).
 argument-hint: "[--rapido para el modo de tres preguntas | --redo para retomar lo pendiente o re-entrevistar | --check-integrations para re-detectar MCPs y connectors | --area civil|laboral|... para reconfigurar solo un área | --avisos para configurar solo los avisos de fechas | --defaults para rellenar con defaults sensatos sin entrevista]"
 ---
 

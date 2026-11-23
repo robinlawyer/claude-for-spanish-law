@@ -6,7 +6,7 @@ Plugin único del marketplace `claude-for-spanish-law`. Convierte a Claude en un
 
 ### Configuración del despacho (instala primero)
 
-- `/robin:cold-start-interview` — Configuración inicial (5-10 min). Escribe el playbook del despacho. Atajo: escribe `Hola Robin` en tu primer chat (equivalente).
+- `/robin:cold-start-interview` — Configuración inicial (tres preguntas rápidas; el resto, cuando quieras con `--redo`). Escribe el playbook del despacho. Atajo: escribe `Hola Robin` en tu primer chat (equivalente).
 - `/robin:customize` — Edita el playbook después del cold-start.
 - `/robin:matter-workspace` — Gestión de carpetas de asunto (un cliente, un caso).
 - `/robin:doctor` — Diagnóstico de conexión MCP y de playbook.
@@ -142,5 +142,5 @@ Toda skill lee, antes de actuar, el playbook editable en:
 ~/.claude/plugins/config/claude-for-spanish-law/robin/CLAUDE.md
 ```
 
-Si no existe o tiene `[PLACEHOLDER]`, la skill para y te pide ejecutar `cold-start-interview`.
+Si no existe, Robin funciona igual con valores por defecto y, la primera vez que pidas un escrito, te sugiere escribir «Hola Robin». Lo que siga con `[PLACEHOLDER]` usa valores por defecto.
 Editar ese archivo cambia el comportamiento de Robin en todas las skills al instante.

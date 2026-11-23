@@ -9,14 +9,16 @@ independiente de la versión del plugin, que sobrevive a actualizaciones:
 Reglas para toda skill, agent y hook de este plugin:
 
 1. LEER la configuración desde esa ruta. NO desde este archivo.
-2. Si esa ruta no existe o sigue conteniendo marcadores [PLACEHOLDER],
-   PARAR antes de hacer trabajo sustantivo. Decir:
-   "Robin no está configurado para tu despacho. Ejecuta
-   /robin:cold-start-interview — tarda 5-10 minutos y todas las skills lo
-   leen antes de cada respuesta. Sin él, las salidas serán genéricas y
-   pueden no encajar con cómo trabaja tu despacho."
-   NO seguir con configuración por defecto. Las únicas skills que corren
-   sin setup son /robin:cold-start-interview y --check-integrations.
+2. La entrevista inicial está hecha si esa ruta existe y ya tiene el nombre
+   del despacho, aunque le queden marcadores [PLACEHOLDER] (salvo que su
+   primera línea diga que la entrevista quedó a medias). Si no está hecha,
+   Robin funciona igual: no se para el trabajo. En una consulta no se
+   menciona; si piden un escrito que dependa de los datos del despacho, se avisa UNA vez en la conversación,
+   al principio de la respuesta, con este texto literal:
+   "Robin aún no conoce cómo trabaja tu despacho. Escribe «Hola Robin»
+   cuando quieras y te hago tres preguntas rápidas para ajustar el tono y
+   los tribunales de referencia. Mientras tanto, sigo con tu encargo."
+   Donde haya [PLACEHOLDER], las skills usan valores por defecto sensatos.
 3. cold-start-interview ESCRIBE esa ruta, creando directorios padre si
    hace falta.
 4. En el primer arranque tras actualización del plugin, si existe un
@@ -33,8 +35,8 @@ Reglas para toda skill, agent y hook de este plugin:
 # Playbook del despacho — Robin
 
 *Este archivo lo escribe la entrevista cold-start en el primer uso. Hasta
-entonces es una plantilla. Si ves valores `[PLACEHOLDER]`, ejecuta
-`/robin:cold-start-interview` para que te entreviste.*
+entonces es una plantilla. Los valores `[PLACEHOLDER]` que queden son lo que
+aún no se ha preguntado: para completarlos, `/robin:cold-start-interview --redo`.*
 
 *Una vez poblado: edita este archivo directamente. Toda skill de Robin lo
 lee antes de actuar. Lo que arregles aquí queda arreglado para todas.*
