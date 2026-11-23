@@ -115,6 +115,14 @@ def validate_plugin(plugin_dir: Path, marketplace_entry: dict) -> None:
     if not NAME_RE.match(plugin_data.get("name", "")):
         err(f"{plugin_json_path}: name '{plugin_data.get('name')}' inválido")
 
+    # Cowork avisa al sincronizar: «Plugin description must be at most 500 characters»
+    # (correo de Juan, 23-nov-2026).
+    pdesc = plugin_data.get("description")
+    if not isinstance(pdesc, str) or not pdesc.strip():
+        err(f"{plugin_json_path}: description vacía o no es texto")
+    elif len(pdesc) > 500:
+        err(f"{plugin_json_path}: description de {len(pdesc)} caracteres; Cowork admite 500")
+
     # Coherencia con marketplace
     for field in ("name", "description"):
         if marketplace_entry.get(field) != plugin_data.get(field):
